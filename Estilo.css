@@ -1,0 +1,44 @@
+*{
+    margin: 0px;
+    padding: 0px;
+   
+}
+
+body{
+    font-size: 1.5em;
+    font-family:Arial, Helvetica, sans-serif; 
+    color: white;
+    background-color: rgb(10, 10, 10);
+}
+
+a, a:link, a:visited{
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+a:hover{
+    color: blue;
+    background-color: rgb(25, 25, 25);
+}
+
+
+.cabeçalho{
+    background-color: black;
+    text-align: center;
+    border-width: 1px ;
+    font-size: 2em;
+}
+
+.menuSeleção, .logo{
+    padding: 5px;
+}
+
+.conteúdo{
+    text-align: justify;
+    border-width: 1px ;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 20px;
+    background-color:rgb(25, 25, 25);
+    padding: 5px;
+}
