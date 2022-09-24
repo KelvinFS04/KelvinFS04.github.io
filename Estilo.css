@@ -4,6 +4,7 @@
    
 }
 
+
 body{
     font-size: 1em;
     font-family:Arial, Helvetica, sans-serif; 
@@ -18,7 +19,8 @@ div{
 
 h3{
     text-align: center;
-    padding: 5px;
+    padding-bottom: 15px;
+    font-size: 1.5em;
 }
 
 .cabeçalho{
@@ -29,9 +31,17 @@ h3{
     padding: 5px;
 }
 
-.textoCentralizado{
+.containers{
     margin-left: 25%;
     margin-right: 25%;
+}
+
+a{
+    color: gray;
+}
+
+a:hover{
+    color:blue;
 }
 
 .fundoClaro{
