@@ -4,6 +4,13 @@
    
 }
 
+a{
+    color: gray;
+}
+
+a:hover{
+    color:blue;
+}
 
 body{
     font-size: 1em;
@@ -12,6 +19,7 @@ body{
     background-color: rgb(10, 10, 10);
     text-align: justify;
 }
+
 div{
     padding-top: 20px;
     padding-bottom: 30px;
@@ -34,16 +42,15 @@ h3{
 .containers{
     margin-left: 25%;
     margin-right: 25%;
-}
-
-a{
-    color: gray;
-}
-
-a:hover{
-    color:blue;
+    text-align: justify;
 }
 
 .fundoClaro{
     background-color:rgb(20, 20, 20);
+}
+
+.separaçãoContainers{
+    width: 32%;
+    display: inline-block;
+    text-align: center;
 }
