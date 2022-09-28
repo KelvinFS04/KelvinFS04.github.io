@@ -45,6 +45,10 @@ h3{
     text-align: justify;
 }
 
+.fundoEscur{
+    background-color: rgb(10, 10, 10);
+    
+}
 .fundoClaro{
     background-color:rgb(20, 20, 20);
 }
