@@ -102,11 +102,11 @@
         width: 25%;
         height: 100%;
         top: 0px;
-        font-size: 2em;
+        font-size: 1.5em;
     }
-
     
     .linkMenu{
+        padding: 15px;
         color: white;
         text-decoration: none;
     }
