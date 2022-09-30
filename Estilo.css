@@ -26,6 +26,10 @@
         padding-bottom: 30px;
     }
 
+    h1{
+        padding-left: 15px;
+    }
+
     h3{
         text-align: center;
         padding-bottom: 15px;
@@ -40,7 +44,9 @@
         text-align: center;
         border-width: 1px ;
         font-size: 2em;
-        padding: 5px;
+        padding-right: 5px;
+        padding-top: 5px;
+        padding-bottom: 5px;
         width: 100%;
         z-index: 20;
     }
@@ -99,10 +105,10 @@
         position: fixed;
         background-color: black;
         float: left;
-        width: 25%;
+        width: 22.5%;
         height: 100%;
         top: 0px;
-        font-size: 1.5em;
+        font-size: 1.75em;
     }
     
     .linkMenu{
