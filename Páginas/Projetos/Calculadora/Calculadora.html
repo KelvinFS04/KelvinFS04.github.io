@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anotações</title>
+
+    <link  rel="stylesheet" type="text/css" href="../../Estilo.css">
+
+</head>
+<script>
+    function soma (num1, num2)
+{
+    return num1 + num2
+}
+</script>
+<body>
+
+    <div id="cabeçalho">
+        <h2>Calculadora</h2>
+    </div>       
+
+    <div class="fundoEscuro">
+        <div class="containers"><h3>Sobre mim</h3>
+            <div>
+                <p>
+                    Este é um projeto simples com o intuíto de demonstrar conhecimentos básicos na manipulação de dados 
+                    com o uso de JavaScript. Digite os números e selecione a operação que deseja para realizar as contas.
+                </p>
+
+                <label for="valorA">Your valorA:</label>
+                <input type="number" id="valorA" name="valorA" rows="5" cols="33"></input>
+            </div>
+        </div>
+    </div>
+    
+<script> 
+const valorA = document.getElementById('valorA');
+
+
+valorA.addEventListener('input', function handleChange(event) {
+    var aux = event.target.value;
+    aux = parseInt(aux);
+    console.log(aux + aux);
+});   
+</script>
+    
+</body>
+</html>
