@@ -19,23 +19,25 @@
     <input name="botão" id="botão" type="button" onclick="soma()">
 
     <script>
-        let a,b;
+        
         function númeroA(){
             númeroDigitadoA = document.getElementById("input_A").value;
             console.log(númeroDigitadoA);
+            númeroDigitadoA = parseInt(númeroDigitadoA)
 
-            a = númeroDigitadoA;
+            return númeroDigitadoA;
 
         }
         function númeroB(){
-            númeroDigitadoA = document.getElementById("input_B").value;
-            console.log(númeroDigitadoA);
-
-            b = númeroDigitadoA;
+            númeroDigitadoB = document.getElementById("input_B").value;
+            console.log(númeroDigitadoB);
+            númeroDigitadoB = parseInt(númeroDigitadoB);
+            return númeroDigitadoB;
 
         }
+
         function soma(){
-            var soma = a + b ;
+            var soma = númeroA() + númeroB() ;
             console.log(soma);
         }
     </script>   
