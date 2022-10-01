@@ -4,33 +4,83 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anotações</title>
+    <title>Calculadora</title>
 
     <link  rel="stylesheet" type="text/css" href="../../../Estilo.css">
 
     <script src="Calculadora.js"></script>   
 </head>
 <body>
+    
+    
+<!--Menu de seleção-->
+<div id="abaMenu">
+    
+    <!--Botão para abrir menu-->
+    <label for="botão"><img src="../../../imagens/Menu.png" width="50px"></label>
+    <input type="checkbox" id="botão">
+   
+    <!--Menu-->
+    <div id="menuSeleção">
 
-    <div class="containers">       
-        <p>Escolhas os valores:</p>
+        <!--Botão para fechar menu-->
+        <label for="botão"><img src="../../../Imagens/Menu.png" width="50px"></label>     
+        <input type="checkbox" id="botão">
         
-        <!--Entrada de dados-->
-        <input name="input_A" id="input_A" type="number" onchange="númeroA()"><br>
-        <input name="input_B" id="input_B" type="number" onchange="númeroB()"><br>
+        <!--Conteúdo do menu-->
+        <div></div>
+        <div><h1>Menu</h1></div>
+            
+        <a class="linkMenu" href="../../../index.html">Resumo</a><br><br>
+        <a class="linkMenu" href="../../../Páginas/Sobre-mim.html">Sobre mim</a><br><br>
+        <a class="linkMenu" href="../../../Páginas/Sobre-este-site.html">Sobre o site</a><br><br>
+        <a class="linkMenu" href="../../../Páginas/Outros-projetos.html">Outros projetos</a><br><br>
 
-        <!--Seleção de operação-->
-        
-        <input name="soma" id="soma" type="button" value="soma" onclick="soma()">
-        <input name="subtração" id="subtração" type="button" value="subtração" onclick="subtração()">
-        <input name="multiplicação" id="multiplicação" type="button" value="multiplicação" onclick="multiplicação()">
-        <input name="divisão" id="divisão" type="button" value="divisão" onclick="divisão()">
-
-        <!--Saída de dados-->
-        <p id="saída"></p>
 
     </div>
 
+</div>
+
+<!--Cabeçalho-->
+<div id="cabeçalho">
+    <h1>Meu site</h1>
+</div>
+
+<!--Espaçamento entre cabeçalho e conteúdo-->
+<br><br><br><br>
+
+<!--Conteúdo-->
+<div class="fundoEscuro">
+    <div class="containers">
+
+        <div class="separaçãoEm3">    
+            <p>Escolhas os valores:</p>
+            
+            <!--Entrada de dados-->
+            <input name="input_A" id="input_A" type="number" onchange="númeroA()"><br>
+            <input name="input_B" id="input_B" type="number" onchange="númeroB()"><br>
+        </div>
+
+        <div class="separaçãoEm3">
+            <!--Seleção de operação-->
+            
+            <input name="soma" id="soma" type="button" value="soma" onclick="soma()">
+            <input name="subtração" id="subtração" type="button" value="subtração" onclick="subtração()">
+            <input name="multiplicação" id="multiplicação" type="button" value="multiplicação" onclick="multiplicação()">
+            <input name="divisão" id="divisão" type="button" value="divisão" onclick="divisão()">
+
+            <!--Saída de dados-->
+            
+        </div>
+
+        <div class="separaçãoEm3" style="position: relative; bottom: 25px;">
+            <!--Saída de dados-->
+            <h1><strong>Resultado</strong></h1>
+            <p id="saída"></p>
+        </div>
+    </div>
+
+</div>
    
 
 </body>
