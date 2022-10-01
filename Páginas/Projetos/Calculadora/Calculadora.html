@@ -6,41 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anotações</title>
 
-    <link  rel="stylesheet" type="text/css" href="../../Estilo.css">
+    <link  rel="stylesheet" type="text/css" href="../../../Estilo.css">
 
+    <script src="Calculadora.js"></script>   
 </head>
 <body>
 
-    <p>Escolhas os valores:</p>
-    <input name="input_A" id="input_A" type="number" onchange="númeroA()"><br>
-    
-    <input name="input_B" id="input_B" type="number" onchange="númeroB()">
-
-    <input name="botão" id="botão" type="button" onclick="soma()">
-
-    <script>
+    <div class="containers">       
+        <p>Escolhas os valores:</p>
         
-        function númeroA(){
-            númeroDigitadoA = document.getElementById("input_A").value;
-            console.log(númeroDigitadoA);
-            númeroDigitadoA = parseInt(númeroDigitadoA)
+        <input name="input_A" id="input_A" type="number" onchange="númeroA()"><br>
+        
+        <input name="input_B" id="input_B" type="number" onchange="númeroB()"><br>
 
-            return númeroDigitadoA;
+        <input name="soma" id="soma" type="button" value="soma" onclick="soma()">
 
-        }
-        function númeroB(){
-            númeroDigitadoB = document.getElementById("input_B").value;
-            console.log(númeroDigitadoB);
-            númeroDigitadoB = parseInt(númeroDigitadoB);
-            return númeroDigitadoB;
+        <p id="saída"></p>
+    </div>
 
-        }
-
-        function soma(){
-            var soma = númeroA() + númeroB() ;
-            console.log(soma);
-        }
-    </script>   
+   
 
 </body>
 </html>
