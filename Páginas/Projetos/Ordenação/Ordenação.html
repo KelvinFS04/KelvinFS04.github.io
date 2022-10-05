@@ -9,7 +9,7 @@
     <link   rel="stylesheet" type="text/css" href="../../../Estilo.css">
 
 </head>
-<script></script>
+<script src="Ordenação.js"></script>
 <body>    
     <!--Menu de seleção-->
     <div id="abaMenu">
@@ -52,17 +52,20 @@
     
         <div class="containers">
     
-            <div class="separaçãoEm3">
+            <div style="text-align: center">
                 
                 <!--Entrada de dados-->
                 <p>Digite um número e adicione-o na ordenação</p>
-                <input name="entrada" id="entrada" type="number"><br>
-                <input name="botãoDeEntrada" id="botãoDeEntrada" type="button" value="Adicionar Valor">
+                <input name="entrada" id="entrada" type="number" onkeypress="digitoDeEntrada(event)"><br>
+                <input name="botãoDeEntrada" id="botãoDeEntrada" type="button" value="Adicionar Valor" onclick="botãoDeEntrada()"  >
 
                 <p id="saída"></p>
     
             </div>
-    
+
+            <div style="text-align: center">
+                <table id="tabelaPrincipal"></table>
+            </div>
         </div>
     
     </div>

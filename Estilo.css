@@ -116,3 +116,11 @@
         color: white;
         text-decoration: none;
     }
+
+    th, td {
+        padding: 15px;
+    }
+
+    table {
+        border-spacing: 30px;
+    }
