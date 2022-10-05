@@ -1,0 +1,5 @@
+var entrada
+
+function botãoDeEntrada(
+
+)
