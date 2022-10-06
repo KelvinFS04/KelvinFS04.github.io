@@ -1,3 +1,4 @@
+
 let vetorDeDados = []
 
 function digitoDeEntrada(event){
@@ -7,35 +8,43 @@ function digitoDeEntrada(event){
 }
 
 function botãoDeEntrada(){
-    let aux = parseInt(document.getElementById("entrada").value)
-    vetorDeDados.push(aux)
-    vetorDeDados.sort(ordenador)
-    document.getElementById("entrada").value = ""
-    console.log(vetorDeDados[vetorDeDados.length - 1])
-    atualizaTabela()
+    let valor = parseInt(document.getElementById("entrada").value)
+    if(isNaN(valor))
+    {
+        window.alert("Número inválido")
+    }
+    else
+    {
+        vetorDeDados.push(valor)
+        for(var i = 0; i < vetorDeDados.length; i ++)
+        {
+            for(var j = 0; j < vetorDeDados.length; j ++)
+            {
+                if(vetorDeDados[i] < vetorDeDados[j])
+                {
+                var auxiliar = vetorDeDados[i]
+                vetorDeDados[i] = vetorDeDados [j]
+                vetorDeDados[j] = auxiliar
+                }             
+            }
+        }
+        document.getElementById("entrada").value = ""
+        atualizaTabela()
+    }
 }
 
-function atualizaTabela(){
-    htmlTabela = ""
+function atualizaTabela()
+{
+    Tabela = ""
     for (let j = 0; j < vetorDeDados.length;){
-        htmlTabela += "<tr>"
-        for (let i = 0; i < 5; i++, j++){
+        Tabela += "<tr>"
+        for (let i = 0; i < 7; i++, j++){
             if (j >= vetorDeDados.length){
                 break
             }
-            htmlTabela += "<td>" + vetorDeDados[j] + "</td>"
+            Tabela += "<td>" + vetorDeDados[j] + "</td>"
         }
-        htmlTabela += "</tr>"
+        Tabela += "</tr>"
     }
-    document.getElementById("tabelaPrincipal").innerHTML = htmlTabela
+    document.getElementById("tabelaPrincipal").innerHTML = Tabela
 }
-
-function ordenador(a, b) {
-    if (a > b) {
-      return 1;
-    } else if (b > a) {
-      return -1;
-    } else {
-      return 0;
-    }
-  }
