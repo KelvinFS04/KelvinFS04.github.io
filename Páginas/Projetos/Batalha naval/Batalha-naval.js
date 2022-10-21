@@ -7,16 +7,22 @@ for (let a = 0; a < 5; a++)
     }
 }
 
-function mudaMapa()
+function adicionaSubmarinos()
 {
-    for (let c = 0; c < 5; c++) 
+    
+    for (let i = 0; i < 3; i++) 
     {
-        for (let d = 0; d < 5; d++) 
+       
+        id = "x" + coordenadaRandômica() + "y" + coordenadaRandômica();
+        if (document.getElementById(id).outerText == "Água") 
         {
-            let id = "x" + c + "y" + d;
-            document.getElementById(id).innerHTML = "a";
-        } 
-    }
+        document.getElementById(id).innerHTML = "Submarino";
+        }   
+        else
+        {
+            i--
+        }
+    }           
 }
 
 function geraMapa()
@@ -26,13 +32,23 @@ function geraMapa()
         Tabela += "<tr>";
         for (let j = 0; j < 5; j++){
             Tabela += '<td id = "x' + j;
-            Tabela += 'y' + i + '"> teste </td>';
+            Tabela += 'y' + i + '">Água</td>';
         }
         Tabela += "</tr>";
     }
     document.getElementById("mapa").innerHTML = Tabela;
+    adicionaSubmarinos();
+
 }
 
+function coordenadaRandômica()
+{
+    let min = 0;
+    let max = 4;
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 
 
