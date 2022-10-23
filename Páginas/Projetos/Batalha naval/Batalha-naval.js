@@ -34,7 +34,7 @@ function adicionaSubmarinos()
         id = "x" + numRandômico(0, 4) + "y" + numRandômico(0, 4);
         if (document.getElementById(id).outerText == "Água") 
         {
-            document.getElementById(id).innerHTML = "Submarino";
+            document.getElementById(id).innerHTML = "S";
         }   
         else
         {
@@ -45,57 +45,51 @@ function adicionaSubmarinos()
 
 function adicionaTorpedeiro()
 {
-    
-    for (let i = 0; i < 3; i++) 
+    quantidadeDeBarcos = 0
+    while(quantidadeDeBarcos <3)
     {
-        console.log("Entrou no laço de quantidade de torpedeiros")
-        x = numRandômico(0, 4);
-        y = numRandômico(0, 4);
-        id = "x" + x + "y" + y;
-        let orientação = numRandômico(1,2);
-       
-        if (orientação == 1 && y >= 2 && y <= 3) 
-        { 
-            
-            console.log("Entrou no if de orientação")
-            
-            for (let j = 0; j < 2; j++) 
-            {
-                console.log("Entrou no laço de quantidade de casas de torpedeiros")
-            
-                if (document.getElementById(id).outerText == "Água") 
-                {
-                    console.log("Entrou no if de primeira casa")
-                    let cabe = true;
-                    let aux =0
-                    aux += j +1
-                    let validaçãoIDs = "x" + x +"y" + aux;
-                    console.log("id = " + validaçãoIDs)
-                    if(document.getElementById(validaçãoIDs).outerText != "Água")
-                    {
-                        console.log("Entrou no if de != Água")
-                        cabe = false
-                    }
-                    if (cabe == true) 
-                    {
-                        console.log("Entrou no if de cabe == true ")
-                        let colocandoID = "x" + x +"y" + aux
-                        document.getElementById(colocandoID).innerHTML = "Torpedeiro";   
-                    }
-                    
-                }   
-                else
-                {
-                    j--;
-                }
-            }
-        }
-        else
+        do 
         {
-            console.log("Não entrou no if de orientação")
-            i--
+            x = numRandômico(0, 4); 
+            y = numRandômico(0, 3);
+            id = "x" + x + "y" + y;
+           
+            deuCerto = true
+            if(document.getElementById(id).outerText == "Água")
+            { 
+                for (let j = 0; j < 2; j++) 
+                {
+                    var auxliarY = y + j 
+                    var idAUX = "x" + x + "y" + auxliarY;
+                    console.log("id auxiliar da verificação: " + idAUX)
+                    if(document.getElementById(idAUX).outerText == "Água")
+                    {
+                        console.log("Deu certo a " + (j +1) + "° casa")
+                    }
+                    else
+                    {
+                        deuCerto = false
+                    }
+                }
+                console.log("Saiu do for")
+            }
+            else
+            {
+                deuCerto = false
+            }
+            
+        } while (deuCerto == false );   
+        
+        
+        for (let j = 0; j < 2; j++) 
+        {
+            var auxliarY = y + j
+            var idAUX = "x" + x + "y" + auxliarY;
+            console.log("id auxiliar do posicionamento: " + idAUX)
+            document.getElementById(idAUX).innerHTML = "T";
         }
-    } 
+        quantidadeDeBarcos++
+    }  
 }
 
 function numRandômico(min, max)
@@ -104,6 +98,3 @@ function numRandômico(min, max)
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
-
-
