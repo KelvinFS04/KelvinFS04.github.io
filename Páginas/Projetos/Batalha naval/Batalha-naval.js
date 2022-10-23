@@ -1,7 +1,7 @@
 let matriz = [,];
-for (let a = 0; a < 5; a++) 
+for (let a = 0; a < 8; a++) 
 {
-    for (let b = 0; b < 5; b++) 
+    for (let b = 0; b < 8; b++) 
     {
         matriz[a,b] = "" + a + b;
     }
@@ -11,9 +11,9 @@ for (let a = 0; a < 5; a++)
 function geraMapa()
 {
     Tabela = "";
-    for (let i = 0; i < 5; i++){
+    for (let i = 0; i < 8; i++){
         Tabela += "<tr>";
-        for (let j = 0; j < 5; j++){
+        for (let j = 0; j < 8; j++){
             Tabela += '<td id = "x' + j;
             Tabela += 'y' + i + '">Água</td>';
         }
@@ -28,10 +28,10 @@ function geraMapa()
 function adicionaSubmarinos()
 {
     
-    for (let i = 0; i < 4; i++) 
+    for (let i = 0; i <= 5; i++) 
     {
        
-        id = "x" + numRandômico(0, 4) + "y" + numRandômico(0, 4);
+        id = "x" + numRandômico(0, 7) + "y" + numRandômico(0, 7);
         if (document.getElementById(id).outerText == "Água") 
         {
             document.getElementById(id).innerHTML = "S";
@@ -46,47 +46,81 @@ function adicionaSubmarinos()
 function adicionaTorpedeiro()
 {
     quantidadeDeBarcos = 0
-    while(quantidadeDeBarcos <3)
+    while(quantidadeDeBarcos <=4)
     {
-        do 
+        let orientação = numRandômico(1,2);
+        console.log(orientação)
+        if(orientação ==1)
         {
-            x = numRandômico(0, 4); 
-            y = numRandômico(0, 3);
-            id = "x" + x + "y" + y;
-           
-            deuCerto = true
-            if(document.getElementById(id).outerText == "Água")
-            { 
-                for (let j = 0; j < 2; j++) 
-                {
-                    var auxliarY = y + j 
-                    var idAUX = "x" + x + "y" + auxliarY;
-                    console.log("id auxiliar da verificação: " + idAUX)
-                    if(document.getElementById(idAUX).outerText == "Água")
+            do 
+            {
+                x = numRandômico(0, 7); 
+                y = numRandômico(0, 6);
+                id = "x" + x + "y" + y;
+            
+                deuCerto = true
+                if(document.getElementById(id).outerText == "Água")
+                { 
+                    for (let j = 0; j < 2; j++) 
                     {
-                        console.log("Deu certo a " + (j +1) + "° casa")
-                    }
-                    else
-                    {
-                        deuCerto = false
+                        var auxiliarY = y + j 
+                        var idAUX = "x" + x + "y" + auxiliarY;
+                        if(document.getElementById(idAUX).outerText != "Água")
+                        {
+                            deuCerto = false
+                        }
                     }
                 }
-                console.log("Saiu do for")
-            }
-            else
-            {
-                deuCerto = false
-            }
+                else
+                {
+                    deuCerto = false
+                }
+                
+            } while (deuCerto == false );   
             
-        } while (deuCerto == false );   
-        
-        
-        for (let j = 0; j < 2; j++) 
+            
+            for (let j = 0; j < 2; j++) 
+            {
+                var auxiliarY = y + j
+                var idAUX = "x" + x + "y" + auxiliarY;
+                document.getElementById(idAUX).innerHTML = "T";
+            }
+        }
+        else
         {
-            var auxliarY = y + j
-            var idAUX = "x" + x + "y" + auxliarY;
-            console.log("id auxiliar do posicionamento: " + idAUX)
-            document.getElementById(idAUX).innerHTML = "T";
+            do 
+            {
+                x = numRandômico(0, 6); 
+                y = numRandômico(0, 7);
+                id = "x" + x + "y" + y;
+            
+                deuCerto = true
+                if(document.getElementById(id).outerText == "Água")
+                { 
+                    for (let j = 0; j < 2; j++) 
+                    {
+                        var auxiliarX = x + j 
+                        var idAUX = "x" + auxiliarX + "y" + y;
+                        if(document.getElementById(idAUX).outerText != "Água")
+                        {
+                            deuCerto = false
+                        }
+                    }
+                }
+                else
+                {
+                    deuCerto = false
+                }
+                
+            } while (deuCerto == false );   
+            
+            
+            for (let j = 0; j < 2; j++) 
+            {
+                var auxiliarX = x + j
+                var idAUX = "x" + auxiliarX + "y" + y;
+                document.getElementById(idAUX).innerHTML = "T";
+            }
         }
         quantidadeDeBarcos++
     }  
