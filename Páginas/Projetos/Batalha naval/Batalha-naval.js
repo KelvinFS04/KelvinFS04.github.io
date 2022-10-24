@@ -205,7 +205,7 @@ function adicionaCruzador()
 function adicionaPortaAviões()
 {
     quantidadeDeBarcos = 0
-    while(quantidadeDeBarcos <3)
+    while(quantidadeDeBarcos <2)
     {
         let orientação = numRandômico(1,2);
         console.log(orientação)
