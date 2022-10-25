@@ -10,10 +10,10 @@ function geraMapa()
         Tabela += "</tr>";
     }
     document.getElementById("mapa").innerHTML = Tabela;
-    adicionaSubmarinos();
-    adicionaTorpedeiro();
-    adicionaCruzador();
     adicionaPortaAviões();
+    adicionaCruzador();
+    adicionaTorpedeiro();
+    adicionaSubmarinos();
 
 }
 
