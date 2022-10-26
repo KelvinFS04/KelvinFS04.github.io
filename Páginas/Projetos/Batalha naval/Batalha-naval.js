@@ -4,17 +4,21 @@ function geraMapa()
     for (let i = 0; i < 8; i++){
         Tabela += "<tr>";
         for (let j = 0; j < 8; j++){
-            Tabela += '<td id = "x' + j;
-            Tabela += 'y' + i + '">Água</td>';
+            Tabela += '<td id = "x' + j + 'y' + i + '">Água</td>';
         }
         Tabela += "</tr>";
     }
     document.getElementById("mapa").innerHTML = Tabela;
+    adicionaEmbarcações()
+
+}
+
+function adicionaEmbarcações()
+{
     adicionaPortaAviões();
     adicionaCruzador();
     adicionaTorpedeiro();
     adicionaSubmarinos();
-
 }
 
 function adicionaSubmarinos()
@@ -26,7 +30,8 @@ function adicionaSubmarinos()
         id = "x" + numRandômico(0, 7) + "y" + numRandômico(0, 7);
         if (document.getElementById(id).outerText == "Água") 
         {
-            document.getElementById(id).innerHTML = "S";
+            document.getElementById(id).innerHTML = 
+            '<button onclick="explodeXY()"><img src="../../../Imagens/Explosão.jpg" width="20px"></button>';
         }   
         else
         {
@@ -291,4 +296,9 @@ function numRandômico(min, max)
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function explodeXY()
+{
+    console.log("Buummmm")
 }
