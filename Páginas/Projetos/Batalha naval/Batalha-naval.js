@@ -30,8 +30,7 @@ function adicionaSubmarinos()
         id = "x" + numRandômico(0, 7) + "y" + numRandômico(0, 7);
         if (document.getElementById(id).outerText == "Água") 
         {
-            document.getElementById(id).innerHTML = 
-            '<button onclick="explodeXY()"><img src="../../../Imagens/Explosão.jpg" width="20px"></button>';
+            document.getElementById(id).innerHTML = '<button onclick="explodeXY('+id+')">TESTE</button>'
         }   
         else
         {
@@ -46,7 +45,6 @@ function adicionaTorpedeiro()
     while(quantidadeDeBarcos <4)
     {
         let orientação = numRandômico(1,2);
-        console.log(orientação)
         if(orientação ==1)
         {
             do 
@@ -129,7 +127,6 @@ function adicionaCruzador()
     while(quantidadeDeBarcos <3)
     {
         let orientação = numRandômico(1,2);
-        console.log(orientação)
         if(orientação ==1)
         {
             do 
@@ -213,7 +210,6 @@ function adicionaPortaAviões()
     while(quantidadeDeBarcos <2)
     {
         let orientação = numRandômico(1,2);
-        console.log(orientação)
         if(orientação ==1)
         {
             do 
@@ -298,7 +294,7 @@ function numRandômico(min, max)
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function explodeXY()
+function explodeXY(id)
 {
-    console.log("Buummmm")
+    console.log(id.id)
 }
