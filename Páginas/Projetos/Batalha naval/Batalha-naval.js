@@ -1,10 +1,12 @@
+
+//mapa do jogador
 function geraMapa()
 {
     Tabela = "";
     for (let i = 0; i < 8; i++){
         Tabela += "<tr>";
         for (let j = 0; j < 8; j++){
-            Tabela += '<td id = "x' + j + 'y' + i + '">Água</td>';
+            Tabela += '<td> <button id = "x' + j + 'y' + i + '"onclick="ataque()">Água</button></td>';
         }
         Tabela += "</tr>";
     }
@@ -30,7 +32,9 @@ function adicionaSubmarinos()
         id = "x" + numRandômico(0, 7) + "y" + numRandômico(0, 7);
         if (document.getElementById(id).outerText == "Água") 
         {
-            document.getElementById(id).innerHTML = '<button onclick="explodeXY('+id+')">TESTE</button>'
+            document.getElementById(id).style.color = "white"
+            document.getElementById(id).innerHTML = "S"
+            
         }   
         else
         {
@@ -294,7 +298,10 @@ function numRandômico(min, max)
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function explodeXY(id)
+
+//mapa do bot
+
+function ataque(elemento)
 {
-    console.log(id.id)
-}
+    console.log(elemento.id)
+}   
