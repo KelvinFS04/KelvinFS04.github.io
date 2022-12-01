@@ -1,3 +1,9 @@
+//mapa do bot
+
+function ataque(elemento)
+{
+    console.log(elemento)
+}   
 
 //mapa do jogador
 function geraMapa()
@@ -6,21 +12,14 @@ function geraMapa()
     for (let i = 0; i < 8; i++){
         Tabela += "<tr>";
         for (let j = 0; j < 8; j++){
-            Tabela += '<td> <button id = "x' + j + 'y' + i + '"onclick="ataque()">Água</button></td>';
+            Tabela += '<td> <button id = "x' + j +
+            'y' + i + '"onclick="ataque(this.id)">Água</button></td>';
         }
         Tabela += "</tr>";
     }
     document.getElementById("mapa").innerHTML = Tabela;
     adicionaEmbarcações()
 
-}
-
-function adicionaEmbarcações()
-{
-    adicionaPortaAviões();
-    adicionaCruzador();
-    adicionaTorpedeiro();
-    adicionaSubmarinos();
 }
 
 function adicionaSubmarinos()
@@ -298,10 +297,10 @@ function numRandômico(min, max)
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-
-//mapa do bot
-
-function ataque(elemento)
+function adicionaEmbarcações()
 {
-    console.log(elemento.id)
-}   
+    adicionaPortaAviões();
+    adicionaCruzador();
+    adicionaTorpedeiro();
+    adicionaSubmarinos();
+}
