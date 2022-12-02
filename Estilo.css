@@ -126,7 +126,9 @@
     }
 
     table {
-        padding: 0%;
+        padding: 0px;
+        margin: 0px;
+
     }
 
 
@@ -135,4 +137,5 @@
         height: 50px;
         border-radius: 25px;
         background-color: white;
+        margin: -5px;
     }
