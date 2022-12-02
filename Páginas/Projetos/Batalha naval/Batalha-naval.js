@@ -3,9 +3,21 @@
 function ataque(elemento)
 {
     console.log(elemento)
+    if (document.getElementById(elemento).outerText != "Água") 
+    {
+        console.log(document.getElementById(elemento).outerText);
+        document.getElementById(elemento).style.backgroundColor = "red";
+        document.getElementById(elemento).innerHTML = "";
+    }
+    else
+    {
+        console.log("Água");
+        document.getElementById(elemento).style.backgroundColor = "blue";
+        document.getElementById(elemento).innerHTML = "";
+
+    }
 }   
 
-//mapa do jogador
 function geraMapa()
 {
     Tabela = "";
@@ -13,12 +25,12 @@ function geraMapa()
         Tabela += "<tr>";
         for (let j = 0; j < 8; j++){
             Tabela += '<td> <button id = "x' + j +
-            'y' + i + '"onclick="ataque(this.id)">Água</button></td>';
+            'y' + i + '"onclick="ataque(this.id)"  style="color: white;" >Água</button></td>';
         }
         Tabela += "</tr>";
     }
     document.getElementById("mapa").innerHTML = Tabela;
-    adicionaEmbarcações()
+    adicionaEmbarcações();
 
 }
 
@@ -31,8 +43,8 @@ function adicionaSubmarinos()
         id = "x" + numRandômico(0, 7) + "y" + numRandômico(0, 7);
         if (document.getElementById(id).outerText == "Água") 
         {
-            document.getElementById(id).style.color = "white"
-            document.getElementById(id).innerHTML = "S"
+            document.getElementById(id).style.color = "white";
+            document.getElementById(id).innerHTML = "S";
             
         }   
         else
@@ -44,7 +56,7 @@ function adicionaSubmarinos()
 
 function adicionaTorpedeiro()
 {
-    quantidadeDeBarcos = 0
+    quantidadeDeBarcos = 0;
     while(quantidadeDeBarcos <4)
     {
         let orientação = numRandômico(1,2);
@@ -56,22 +68,24 @@ function adicionaTorpedeiro()
                 y = numRandômico(0, 6);
                 id = "x" + x + "y" + y;
             
-                deuCerto = true
+                deuCerto = true;
+                
+
                 if(document.getElementById(id).outerText == "Água")
                 { 
                     for (let j = 0; j < 2; j++) 
                     {
-                        var auxiliarY = y + j 
+                        var auxiliarY = y + j;
                         var idAUX = "x" + x + "y" + auxiliarY;
                         if(document.getElementById(idAUX).outerText != "Água")
                         {
-                            deuCerto = false
+                            deuCerto = false;
                         }
                     }
                 }
                 else
                 {
-                    deuCerto = false
+                    deuCerto = false;
                 }
                 
             } while (deuCerto == false );   
@@ -79,9 +93,10 @@ function adicionaTorpedeiro()
             
             for (let j = 0; j < 2; j++) 
             {
-                var auxiliarY = y + j
+                var auxiliarY = y + j;
                 var idAUX = "x" + x + "y" + auxiliarY;
                 document.getElementById(idAUX).innerHTML = "T";
+                document.getElementById(idAUX).style.color = "white";
             }
         }
         else
@@ -92,22 +107,22 @@ function adicionaTorpedeiro()
                 y = numRandômico(0, 7);
                 id = "x" + x + "y" + y;
             
-                deuCerto = true
+                deuCerto = true;
                 if(document.getElementById(id).outerText == "Água")
                 { 
                     for (let j = 0; j < 2; j++) 
                     {
-                        var auxiliarX = x + j 
+                        var auxiliarX = x + j;
                         var idAUX = "x" + auxiliarX + "y" + y;
                         if(document.getElementById(idAUX).outerText != "Água")
                         {
-                            deuCerto = false
+                            deuCerto = false;
                         }
                     }
                 }
                 else
                 {
-                    deuCerto = false
+                    deuCerto = false;
                 }
                 
             } while (deuCerto == false );   
@@ -115,18 +130,19 @@ function adicionaTorpedeiro()
             
             for (let j = 0; j < 2; j++) 
             {
-                var auxiliarX = x + j
+                var auxiliarX = x + j;
                 var idAUX = "x" + auxiliarX + "y" + y;
                 document.getElementById(idAUX).innerHTML = "T";
+                document.getElementById(idAUX).style.color = "white";
             }
         }
-        quantidadeDeBarcos++
+        quantidadeDeBarcos++;
     }  
 }
 
 function adicionaCruzador()
 {
-    quantidadeDeBarcos = 0
+    quantidadeDeBarcos = 0;
     while(quantidadeDeBarcos <3)
     {
         let orientação = numRandômico(1,2);
@@ -138,22 +154,22 @@ function adicionaCruzador()
                 y = numRandômico(0, 5);
                 id = "x" + x + "y" + y;
             
-                deuCerto = true
+                deuCerto = true;
                 if(document.getElementById(id).outerText == "Água")
                 { 
                     for (let j = 0; j < 3; j++) 
                     {
-                        var auxiliarY = y + j 
+                        var auxiliarY = y + j;
                         var idAUX = "x" + x + "y" + auxiliarY;
                         if(document.getElementById(idAUX).outerText != "Água")
                         {
-                            deuCerto = false
+                            deuCerto = false;
                         }
                     }
                 }
                 else
                 {
-                    deuCerto = false
+                    deuCerto = false;
                 }
                 
             } while (deuCerto == false );   
@@ -161,9 +177,10 @@ function adicionaCruzador()
             
             for (let j = 0; j < 3; j++) 
             {
-                var auxiliarY = y + j
+                var auxiliarY = y + j;
                 var idAUX = "x" + x + "y" + auxiliarY;
                 document.getElementById(idAUX).innerHTML = "C";
+                document.getElementById(idAUX).style.color = "white";
             }
         }
         else
@@ -179,17 +196,17 @@ function adicionaCruzador()
                 { 
                     for (let j = 0; j < 3; j++) 
                     {
-                        var auxiliarX = x + j 
+                        var auxiliarX = x + j;
                         var idAUX = "x" + auxiliarX + "y" + y;
                         if(document.getElementById(idAUX).outerText != "Água")
                         {
-                            deuCerto = false
+                            deuCerto = false;
                         }
                     }
                 }
                 else
                 {
-                    deuCerto = false
+                    deuCerto = false;
                 }
                 
             } while (deuCerto == false );   
@@ -197,19 +214,20 @@ function adicionaCruzador()
             
             for (let j = 0; j < 3; j++) 
             {
-                var auxiliarX = x + j
+                var auxiliarX = x + j;
                 var idAUX = "x" + auxiliarX + "y" + y;
                 document.getElementById(idAUX).innerHTML = "C";
+                document.getElementById(idAUX).style.color = "white";
             }
         }
-        quantidadeDeBarcos++
+        quantidadeDeBarcos++;
     }  
 
 }
 
 function adicionaPortaAviões()
 {
-    quantidadeDeBarcos = 0
+    quantidadeDeBarcos = 0;
     while(quantidadeDeBarcos <2)
     {
         let orientação = numRandômico(1,2);
@@ -221,22 +239,22 @@ function adicionaPortaAviões()
                 y = numRandômico(0, 4);
                 id = "x" + x + "y" + y;
             
-                deuCerto = true
+                deuCerto = true;
                 if(document.getElementById(id).outerText == "Água")
                 { 
                     for (let j = 0; j < 4; j++) 
                     {
-                        var auxiliarY = y + j 
+                        var auxiliarY = y + j;
                         var idAUX = "x" + x + "y" + auxiliarY;
                         if(document.getElementById(idAUX).outerText != "Água")
                         {
-                            deuCerto = false
+                            deuCerto = false;
                         }
                     }
                 }
                 else
                 {
-                    deuCerto = false
+                    deuCerto = false;
                 }
                 
             } while (deuCerto == false );   
@@ -244,9 +262,10 @@ function adicionaPortaAviões()
             
             for (let j = 0; j < 4; j++) 
             {
-                var auxiliarY = y + j
+                var auxiliarY = y + j;
                 var idAUX = "x" + x + "y" + auxiliarY;
                 document.getElementById(idAUX).innerHTML = "PA";
+                document.getElementById(idAUX).style.color = "white";
             }
         }
         else
@@ -262,17 +281,17 @@ function adicionaPortaAviões()
                 { 
                     for (let j = 0; j < 4; j++) 
                     {
-                        var auxiliarX = x + j 
+                        var auxiliarX = x + j;
                         var idAUX = "x" + auxiliarX + "y" + y;
                         if(document.getElementById(idAUX).outerText != "Água")
                         {
-                            deuCerto = false
+                            deuCerto = false;
                         }
                     }
                 }
                 else
                 {
-                    deuCerto = false
+                    deuCerto = false;
                 }
                 
             } while (deuCerto == false );   
@@ -280,12 +299,13 @@ function adicionaPortaAviões()
             
             for (let j = 0; j < 4; j++) 
             {
-                var auxiliarX = x + j
+                var auxiliarX = x + j;
                 var idAUX = "x" + auxiliarX + "y" + y;
                 document.getElementById(idAUX).innerHTML = "PA";
+                document.getElementById(idAUX).style.color = "white";
             }
         }
-        quantidadeDeBarcos++
+        quantidadeDeBarcos++;
     }  
 
 }
