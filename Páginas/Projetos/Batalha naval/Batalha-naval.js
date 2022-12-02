@@ -1,19 +1,23 @@
 //mapa do bot
 
-function ataque(elemento)
+function ataque(ID)
 {
-    console.log(elemento)
-    if (document.getElementById(elemento).outerText != "Água") 
+    console.log(ID)
+    let elemento =  document.getElementById(ID);
+    if (document.getElementById(ID).outerText != "Água") 
     {
-        console.log(document.getElementById(elemento).outerText);
-        document.getElementById(elemento).style.backgroundColor = "red";
-        document.getElementById(elemento).innerHTML = "";
+        console.log(document.getElementById(ID).outerText);
+        elemento.style.backgroundImage = "url('Explosão.png')";
+        elemento.style.backgroundColor = "transparent"
+        elemento.innerHTML = "";
+        document.getElementById(ID).disabled = true;
     }
     else
     {
         console.log("Água");
-        document.getElementById(elemento).style.backgroundColor = "blue";
-        document.getElementById(elemento).innerHTML = "";
+        elemento.style.backgroundColor = "blue";
+        elemento.innerHTML = "";
+        elemento.disabled = true;
 
     }
 }   
