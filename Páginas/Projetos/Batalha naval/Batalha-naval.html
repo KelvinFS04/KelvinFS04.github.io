@@ -49,19 +49,20 @@
 <!--Espaçamento entre cabeçalho e conteúdo-->
 <br><br><br><br>
 
+
+
 <!--Conteúdo-->
-<div>Batalha naval</div>
-<input type="button" onclick = "geraMapa()" value="Gerar Mapa"><br>
 
 
-<table id = "mapa" style="display: inline-block">
-    
-</table>
+    <div>Batalha naval</div>
 
-<table id="mapaJogador" style="float: right">
+    <input type="button" onclick = "geraMapa()" value="Gerar Mapa"><br>
 
-</table>
+    <div id="mapas" style="background-image: url('Mapa.jpg'); display: none;">
+        <table id = "mapaBot" style="display: inline-block;"></table>
 
+        <table id="mapaJogador" style="float: right"></table>
+    </div>
 
 
 </body>

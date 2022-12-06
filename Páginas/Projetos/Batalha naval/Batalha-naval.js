@@ -2,11 +2,10 @@
 
 function ataque(ID)
 {
-    console.log(ID)
+   
     let elemento =  document.getElementById(ID);
     if (document.getElementById(ID).outerText != "Água") 
     {
-        console.log(document.getElementById(ID).outerText);
         elemento.style.backgroundImage = "url('Explosão.png')";
         elemento.style.backgroundColor = "transparent"
         elemento.innerHTML = "";
@@ -14,7 +13,6 @@ function ataque(ID)
     }
     else
     {
-        console.log("Água");
         elemento.style.backgroundImage = "url('Água.png')";
         elemento.style.backgroundColor = "transparent"
         elemento.innerHTML = "";
@@ -25,6 +23,7 @@ function ataque(ID)
 
 function geraMapa()
 {
+    
     Tabela = "";
     for (let i = 0; i < 8; i++){
         Tabela += "<tr>";
@@ -34,7 +33,7 @@ function geraMapa()
         }
         Tabela += "</tr>";
     }
-    document.getElementById("mapa").innerHTML = Tabela;
+    document.getElementById("mapaBot").innerHTML = Tabela;
     adicionaEmbarcações();
 
     TabelaP = "";
@@ -47,6 +46,8 @@ function geraMapa()
         TabelaP += "</tr>";
     }
     document.getElementById("mapaJogador").innerHTML = TabelaP;
+
+    document.getElementById("mapas").style.display = "block";
 
 }
 
