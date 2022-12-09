@@ -122,12 +122,12 @@
     }
 
     th, td {
-        padding: 15px;
+        padding: 0px;
     }
 
     table {
         padding: 0px;
-        margin: 5%;
+        margin: 0%;
 
     }
 
@@ -137,7 +137,13 @@
         height: 50px;
         border-radius: 25px;
         background-color: white;
-        margin: -5px;
+        
+    }
+
+    #mapas{
+        background-image: url('Páginas/Projetos/Batalha\ naval/Mapa.jpg'); 
+        display: none;
+        margin: auto;       
     }
 
     

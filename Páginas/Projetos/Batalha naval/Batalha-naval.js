@@ -1,3 +1,6 @@
+const acerto = new Audio("acerto.wav");
+const erro = new Audio("erro.wav");
+
 //mapa do bot
 
 function ataque(ID)
@@ -7,17 +10,16 @@ function ataque(ID)
     if (document.getElementById(ID).outerText != "Água") 
     {
         elemento.style.backgroundImage = "url('Explosão.png')";
-        elemento.style.backgroundColor = "transparent"
-        elemento.innerHTML = "";
+        elemento.style.backgroundColor = "transparent";
         document.getElementById(ID).disabled = true;
+        acerto.play();
     }
     else
     {
         elemento.style.backgroundImage = "url('Água.png')";
-        elemento.style.backgroundColor = "transparent"
-        elemento.innerHTML = "";
+        elemento.style.backgroundColor = "transparent";
         elemento.disabled = true;
-
+        erro.play();
     }
 }   
 
@@ -29,7 +31,7 @@ function geraMapa()
         Tabela += "<tr>";
         for (let j = 0; j < 8; j++){
             Tabela += '<td> <button id = "x' + j +
-            'y' + i + '"onclick="ataque(this.id)"  style="color: white;" >Água</button></td>';
+            'y' + i + '"onclick="ataque(this.id)"  style="color: transparent;" >Água</button></td>';
         }
         Tabela += "</tr>";
     }
@@ -41,13 +43,15 @@ function geraMapa()
         TabelaP += "<tr>";
         for (let j = 0; j < 8; j++){
             TabelaP += '<td> <button id = "x' + j +
-            'y' + i + 'p" style="color: white;" >Água</button></td>';
+            'y' + i + 'p" style="color: transparent;" onmouseover = "over()" onmouseout="out()"  >Água</button></td>';
         }
         TabelaP += "</tr>";
     }
     document.getElementById("mapaJogador").innerHTML = TabelaP;
 
     document.getElementById("mapas").style.display = "block";
+    document.getElementById("mapas").style.width = "1000px";
+    
 
 }
 
@@ -60,7 +64,7 @@ function adicionaSubmarinos()
         id = "x" + numRandômico(0, 7) + "y" + numRandômico(0, 7);
         if (document.getElementById(id).outerText == "Água") 
         {
-            document.getElementById(id).style.color = "white";
+            document.getElementById(id).style.color = "transparent";
             document.getElementById(id).innerHTML = "S";
             
         }   
@@ -116,7 +120,7 @@ function adicionaTorpedeiro()
                 var auxiliarY = y + j;
                 var idAUX = "x" + x + "y" + auxiliarY;
                 document.getElementById(idAUX).innerHTML = "T";
-                document.getElementById(idAUX).style.color = "white";
+                document.getElementById(idAUX).style.color = "transparent";
             }
         }
         else
@@ -153,7 +157,7 @@ function adicionaTorpedeiro()
                 var auxiliarX = x + j;
                 var idAUX = "x" + auxiliarX + "y" + y;
                 document.getElementById(idAUX).innerHTML = "T";
-                document.getElementById(idAUX).style.color = "white";
+                document.getElementById(idAUX).style.color = "transparent";
             }
         }
         quantidadeDeBarcos++;
@@ -205,7 +209,7 @@ function adicionaCruzador()
                 var auxiliarY = y + j;
                 var idAUX = "x" + x + "y" + auxiliarY;
                 document.getElementById(idAUX).innerHTML = "C";
-                document.getElementById(idAUX).style.color = "white";
+                document.getElementById(idAUX).style.color = "transparent";
             }
         }
         else
@@ -242,7 +246,7 @@ function adicionaCruzador()
                 var auxiliarX = x + j;
                 var idAUX = "x" + auxiliarX + "y" + y;
                 document.getElementById(idAUX).innerHTML = "C";
-                document.getElementById(idAUX).style.color = "white";
+                document.getElementById(idAUX).style.color = "transparent";
             }
         }
         quantidadeDeBarcos++;
@@ -294,7 +298,7 @@ function adicionaPortaAviões()
                 var auxiliarY = y + j;
                 var idAUX = "x" + x + "y" + auxiliarY;
                 document.getElementById(idAUX).innerHTML = "PA";
-                document.getElementById(idAUX).style.color = "white";
+                document.getElementById(idAUX).style.color = "transparent";
             }
         }
         else
@@ -331,7 +335,7 @@ function adicionaPortaAviões()
                 var auxiliarX = x + j;
                 var idAUX = "x" + auxiliarX + "y" + y;
                 document.getElementById(idAUX).innerHTML = "PA";
-                document.getElementById(idAUX).style.color = "white";
+                document.getElementById(idAUX).style.color = "transparent";
             }
         }
         quantidadeDeBarcos++;
@@ -351,4 +355,16 @@ function adicionaEmbarcações()
     adicionaCruzador();
     adicionaTorpedeiro();
     adicionaSubmarinos();
+}
+
+//mapa do jogador
+
+function over()
+{
+    console.log("Over funcionando")
+}
+
+function out()
+{
+    console.log("Out funcionando")
 }
