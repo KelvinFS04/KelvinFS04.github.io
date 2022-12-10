@@ -1,4 +1,4 @@
-const acerto = new Audio("acerto.wav");
+const acerto = new Audio("acerto.mp3");
 const erro = new Audio("erro.wav");
 
 //mapa do bot
