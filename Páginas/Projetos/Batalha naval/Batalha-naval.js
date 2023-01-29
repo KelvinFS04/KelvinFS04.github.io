@@ -43,7 +43,7 @@ function geraMapa()
         TabelaP += "<tr>";
         for (let j = 0; j < 8; j++){
             TabelaP += '<td> <button id = "x' + j +
-            'y' + i + 'p" style="color: transparent;" onmouseover = "over(this.id)" onmouseout="out(this.id)"  >Água</button></td>';
+            'y' + i + 'p" style="color: transparent;" onmouseover = "over(this.id)" onmouseout="out(this.id)" onclick="selecionaPosição(this.id)" >Água</button></td>';
         }
         TabelaP += "</tr>";
     }
@@ -359,37 +359,61 @@ function adicionaEmbarcações()
 
 //mapa do jogador
 
-embarcaçãoAtiva = 0
+seleção = "A"
 
 function submarinoAtivo()
 {
-    embarcaçãoAtiva = 1
+    seleção = "S" 
 }
 
 function torpedeiroAtivo()
 {
-    embarcaçãoAtiva = 2
+    seleção = "T"
 }
 
 function cruzadorAtivo()
 {
-    embarcaçãoAtiva = 3
+    seleção = "C"
 }
 
 function portaAviõesAtivo()
 {
-    embarcaçãoAtiva  = 4
+    seleção  = "PA"
 }
 
 
 function over(ID)
 {
-    console.log(ID)
-    console.log(embarcaçãoAtiva)
-   
+    if (seleção == "S") 
+    {   
+        if (document.getElementById(ID).innerHTML == "Água")
+        {
+            document.getElementById(ID).style.backgroundColor = "green"   
+        }
+    }
 }
 
 function out(ID)
 {
-    
+    if (seleção == "S") 
+    {   
+        if (document.getElementById(ID).innerHTML == "Água")
+        {
+            document.getElementById(ID).style.backgroundColor = "white"   
+        }
+    }
+}
+
+function selecionaPosição(ID)
+{
+    console.log("Clicou na posição " + ID)
+    if (document.getElementById(ID).innerHTML == "Água") 
+    {
+        if (seleção == "S") 
+        {
+            document.getElementById(ID).style.backgroundColor = "blue" 
+            document.getElementById(ID).innerHTML = seleção    
+            document.getElementById(ID).style.color = "black"      
+        }
+    }
 }
