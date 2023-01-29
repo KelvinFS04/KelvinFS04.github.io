@@ -43,7 +43,7 @@ function geraMapa()
         TabelaP += "<tr>";
         for (let j = 0; j < 8; j++){
             TabelaP += '<td> <button id = "x' + j +
-            'y' + i + 'p" style="color: transparent;" onmouseover = "over()" onmouseout="out()"  >Água</button></td>';
+            'y' + i + 'p" style="color: transparent;" onmouseover = "over(this.id)" onmouseout="out(this.id)"  >Água</button></td>';
         }
         TabelaP += "</tr>";
     }
@@ -359,12 +359,37 @@ function adicionaEmbarcações()
 
 //mapa do jogador
 
-function over()
+embarcaçãoAtiva = 0
+
+function submarinoAtivo()
 {
-    console.log("Over funcionando")
+    embarcaçãoAtiva = 1
 }
 
-function out()
+function torpedeiroAtivo()
 {
-    console.log("Out funcionando")
+    embarcaçãoAtiva = 2
+}
+
+function cruzadorAtivo()
+{
+    embarcaçãoAtiva = 3
+}
+
+function portaAviõesAtivo()
+{
+    embarcaçãoAtiva  = 4
+}
+
+
+function over(ID)
+{
+    console.log(ID)
+    console.log(embarcaçãoAtiva)
+   
+}
+
+function out(ID)
+{
+    
 }
