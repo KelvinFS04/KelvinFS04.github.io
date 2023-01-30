@@ -360,6 +360,7 @@ function adicionaEmbarcações()
 //mapa do jogador
 
 seleção = "A"
+quantidadeSubmarinos = 0
 
 function submarinoAtivo()
 {
@@ -406,14 +407,21 @@ function out(ID)
 
 function selecionaPosição(ID)
 {
-    console.log("Clicou na posição " + ID)
-    if (document.getElementById(ID).innerHTML == "Água") 
+    if(quantidadeSubmarinos < 5)
     {
-        if (seleção == "S") 
+        if (document.getElementById(ID).innerHTML == "Água") 
         {
-            document.getElementById(ID).style.backgroundColor = "blue" 
-            document.getElementById(ID).innerHTML = seleção    
-            document.getElementById(ID).style.color = "black"      
+            if (seleção == "S") 
+            {
+                document.getElementById(ID).style.backgroundColor = "blue" 
+                document.getElementById(ID).innerHTML = seleção    
+                document.getElementById(ID).style.color = "black"    
+                quantidadeSubmarinos++  
+            }
         }
-    }
+        else
+        {
+            window.alert("Selecione uma posição válida")
+        }
+    }   
 }
