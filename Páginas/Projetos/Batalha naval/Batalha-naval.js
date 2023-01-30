@@ -360,7 +360,6 @@ function adicionaEmbarcações()
 //mapa do jogador
 
 seleção = "A"
-quantidadeSubmarinos = 0
 
 function submarinoAtivo()
 {
@@ -407,6 +406,12 @@ function out(ID)
 
 function selecionaPosição(ID)
 {
+    selecionaSubmarino(ID)
+     
+}
+
+function selecionaSubmarino(ID)
+{
     if(quantidadeSubmarinos < 5)
     {
         if (document.getElementById(ID).innerHTML == "Água") 
@@ -423,5 +428,5 @@ function selecionaPosição(ID)
         {
             window.alert("Selecione uma posição válida")
         }
-    }   
+    }  
 }
