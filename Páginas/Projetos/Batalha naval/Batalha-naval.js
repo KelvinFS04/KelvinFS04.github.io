@@ -407,9 +407,10 @@ function out(ID)
 function selecionaPosição(ID)
 {
     selecionaSubmarino(ID)
-     
+    selecionaCruzador(ID)
 }
 
+quantidadeSubmarinos = 0
 function selecionaSubmarino(ID)
 {
     if(quantidadeSubmarinos < 5)
@@ -429,4 +430,22 @@ function selecionaSubmarino(ID)
             window.alert("Selecione uma posição válida")
         }
     }  
+    else
+    {
+        window.alert("Quantidade máxima de submarinos alcançada")
+    }
+}
+
+quantidadeTorpedeiros
+function selecionaTorpedeiros(ID)
+{
+    if(quantidadeTorpedeiros < 4)
+    {
+        if (document.getElementById(ID).innerHTML == "Água") 
+        {
+            
+        }
+
+
+    }
 }
