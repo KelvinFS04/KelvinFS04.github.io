@@ -52,6 +52,9 @@ function geraMapa()
     document.getElementById("mapas").style.display = "block";
     document.getElementById("mapas").style.width = "1000px";
 
+    document.addEventListener('keydown', pegaTecla);
+
+
 }
 
 function adicionaSubmarinos()
@@ -449,4 +452,13 @@ function selecionaTorpedeiros(ID)
             console.log(IDaux)
         }
     }
+}
+
+
+function pegaTecla(){
+  var tecla = event.keyCode;
+  if (tecla == 82 && seleção == "T") //82 é o código da letra R
+  {
+    window.alert("Rotacionou")
+  }
 }
