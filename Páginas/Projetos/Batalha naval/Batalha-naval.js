@@ -51,7 +51,6 @@ function geraMapa()
 
     document.getElementById("mapas").style.display = "block";
     document.getElementById("mapas").style.width = "1000px";
-    
 
 }
 
@@ -407,7 +406,7 @@ function out(ID)
 function selecionaPosição(ID)
 {
     selecionaSubmarino(ID)
-    selecionaCruzador(ID)
+    selecionaTorpedeiros(ID)
 }
 
 quantidadeSubmarinos = 0
@@ -436,16 +435,18 @@ function selecionaSubmarino(ID)
     }
 }
 
-quantidadeTorpedeiros
+quantidadeTorpedeiros = 0
+
 function selecionaTorpedeiros(ID)
 {
     if(quantidadeTorpedeiros < 4)
     {
         if (document.getElementById(ID).innerHTML == "Água") 
         {
-            
+            x = parseInt(ID.substring(1,2))
+            y = parseInt(ID.substring(3,4))
+            IDaux = "x" + x + "y" + y + "p"
+            console.log(IDaux)
         }
-
-
     }
 }
