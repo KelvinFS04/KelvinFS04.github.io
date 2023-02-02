@@ -2,27 +2,6 @@ const acerto = new Audio("acerto.mp3");
 const erro = new Audio("erro.wav");
 
 //mapa do bot
-
-function ataque(ID)
-{
-   
-    let elemento =  document.getElementById(ID);
-    if (document.getElementById(ID).outerText != "Água") 
-    {
-        elemento.style.backgroundImage = "url('Explosão.png')";
-        elemento.style.backgroundColor = "transparent";
-        document.getElementById(ID).disabled = true;
-        acerto.play();
-    }
-    else
-    {
-        elemento.style.backgroundImage = "url('Água.png')";
-        elemento.style.backgroundColor = "transparent";
-        elemento.disabled = true;
-        erro.play();
-    }
-}   
-
 function geraMapa()
 {
     
@@ -56,6 +35,26 @@ function geraMapa()
 
 
 }
+
+function ataque(ID)
+{
+   
+    let elemento =  document.getElementById(ID);
+    if (document.getElementById(ID).outerText != "Água") 
+    {
+        elemento.style.backgroundImage = "url('Explosão.png')";
+        elemento.style.backgroundColor = "transparent";
+        document.getElementById(ID).disabled = true;
+        acerto.play();
+    }
+    else
+    {
+        elemento.style.backgroundImage = "url('Água.png')";
+        elemento.style.backgroundColor = "transparent";
+        elemento.disabled = true;
+        erro.play();
+    }
+}   
 
 function adicionaSubmarinos()
 {
