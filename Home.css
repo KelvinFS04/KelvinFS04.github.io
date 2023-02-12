@@ -4,14 +4,27 @@
     margin: 0px;
 }
 
-
 #Cabeçario
 {
     width: 100%;
-    background-color: blue;
+    background-color: green;
     position: fixed;
+    text-align: center;
+    
 }
-#Logo
-{
-
-}
+    #Logo
+    {
+        display: inline-block;
+        width: 20%;
+        background-color: red;
+    }
+    #menu
+    {
+        background-color: blue;
+        display: inline-block;
+        width: 79%;
+    }
+        .itensMenu
+        {
+            background-color: brown;
+        }
