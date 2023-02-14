@@ -1,7 +1,12 @@
 #corpo
 {
-    padding-top: 75px;
+    background-color: #141414;
     width: 70%;
     margin: auto;
 }
+    .bloco
+    {
+        background-color: #141414;
+        margin: 0 25px;
+    }
     
