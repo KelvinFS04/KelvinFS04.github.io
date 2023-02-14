@@ -4,6 +4,7 @@
     margin: 0px;
     background-color: rgb(20, 20, 20);
     text-align: justify;
+    font-size: large;
 }
 body
 {
@@ -17,6 +18,7 @@ body
     position: fixed;
     text-align: center;
     display: table;
+    font-size: x-large;
     
 }
     #Logo
@@ -29,7 +31,7 @@ body
     #menu
     {
         text-align: right;
-        background-color: #050505;
+        background-color: #000000;
         display: table-cell;
         vertical-align: middle;
         
@@ -49,7 +51,7 @@ body
 #corpo
 {
     padding-top: 75px;
-    width: 80%;
+    width: 70%;
     margin: auto;
 }
     
