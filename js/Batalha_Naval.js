@@ -2,7 +2,8 @@
 
 //declarando o mapa
 const tamanhoMapa = 10;
-let mapa = new Array(); //array de arrays, equivalente a uma matriz
+//array de arrays, equivalente a uma matriz
+let mapa = new Array(); 
 for (let i = 0; i < tamanhoMapa; i++) {
     vetor = new Array();
     mapa.push(vetor);
@@ -11,18 +12,19 @@ for (let i = 0; i < tamanhoMapa; i++) {
         }
 }
 
-//com as quantidade de embarcações do bot e váriaveis para a validação dessa forma facilida possíveis mudanças
+//com as quantidade de embarcações e váriaveis para a validação dessa forma, possíveis mudanças serão mais simples
 
 const quantidadeSubmarinos = 5; const quantidadeEspaçosSubmarino = 1; const letraSubmarino = "S";
 const quantidadeTorpedeiros = 4; const quantidadeEspaçosTorpedeiros = 2; const letraTorpedeiro = "T";
 const quantidadeCruzadores = 3; const quantidadeEspaçosCruzadores = 3; const letraCruzador = "C";
 const quantidadePortaAviões = 2; const quantidadeEspaçosPortaAviões = 4; const letraPortaAviões = "P";
 let horizontal = true;
+let espaçoLivre = false;
 
-function embarcaçõesBot() 
+function adicionaEmbarcaçõesBot() 
 {
-    torpedeirosBot(quantidadeEspaçosTorpedeiros);
-    submarinoBot();  
+    embarcaçõesBot(quantidadeEspaçosTorpedeiros, quantidadeEspaçosTorpedeiros, quantidadeEspaçosTorpedeiros);
+    
 }
 function submarinoBot()
 {
@@ -39,38 +41,46 @@ function submarinoBot()
         }
     }
 }
-function torpedeirosBot(quantidadeEmbarcações ,quantidadeEspaços , letraEmbarcação)
+function embarcaçõesBot(quantidadeEmbarcações ,quantidadeEspaços , letraEmbarcação)
 {
     for(let j = 0; j < quantidadeEmbarcações; j++)
     {
-        let x = random(0, tamanhoMapa);
-        let y = random(0, tamanhoMapa);
-
         if(horizontal == true)
         {
-            
+            //O número máximo do random está contido no conjunto de possibilidades pra embarcação, por isso o +1
+            let x = random(0, tamanhoMapa - quantidadeEspaços + 1);
+            let y = random(0, tamanhoMapa);    
+
+            //for de validação da posição randomica
             for(let k = 0; k < quantidadeEspaços; k++)
-            if (mapa[y][x] == "A") {
-                if(mapa[y][x+k] == "A")
+            {
+                if (mapa[y][x + k] == "A") 
                 {
-                    mapa[y][x] = ""
-                    mapa[y][x+k]
+                    espaçoLivre = true;
                 }
+                else
+                {
+                    espaçoLivre = false;
+                }
+            }
+
+            //if com o posicionamento das embarcações
+            if (espaçoLivre == true) 
+            {
+                for(let l = 0; l < quantidadeEspaços; l++)
+                {
+                    mapa[y][x + l] == letraEmbarcação;
+                }
+
             }
             else
             {
-                i--;
+                i--
             }
         }
         else
         {
-            if (mapa[y][x] == "A") {
-                mapa[y][x] = "S";
-            }
-            else
-            {
-                i--;
-            }
+            console.log("Entrou no else")
         }
     }
 }
