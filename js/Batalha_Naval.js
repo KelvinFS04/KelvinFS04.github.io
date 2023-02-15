@@ -56,7 +56,7 @@ function embarcaçõesBot(quantidadeEmbarcações ,quantidadeEspaços , letraEmb
                 for(let l = 0; l < quantidadeEspaços; l++)
                 {
                     console.log(mapa[y][x+1]);
-                    mapa[y][x + l] == letraEmbarcação;
+                    mapa[y][x + l] = letraEmbarcação;
                     console.log(mapa[y][x+1]);                    
                 }
 
