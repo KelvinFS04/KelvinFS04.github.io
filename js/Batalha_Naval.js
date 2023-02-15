@@ -7,10 +7,11 @@ let mapa = new Array();
 for (let i = 0; i < tamanhoMapa; i++) {
     vetor = new Array();
     mapa.push(vetor);
-        for(let j = 0; j < tamanhoMapa; j++) {
-            vetor.push("A");
-        }
+    for(let j = 0; j < tamanhoMapa; j++) {
+        vetor.push("A");
+    }
 }
+
 
 //com as quantidade de embarcações e váriaveis para a validação dessa forma, possíveis mudanças serão mais simples
 
@@ -23,24 +24,9 @@ let espaçoLivre = false;
 
 function adicionaEmbarcaçõesBot() 
 {
-    embarcaçõesBot(quantidadeEspaçosTorpedeiros, quantidadeEspaçosTorpedeiros, quantidadeEspaçosTorpedeiros);
-    
+    embarcaçõesBot(quantidadeEspaçosTorpedeiros, quantidadeEspaçosTorpedeiros, letraTorpedeiro);
 }
-function submarinoBot()
-{
-    for (let j = 0; j < quantidadeSubmarinos; j++) {
-        let x = random(0, tamanhoMapa);
-        let y = random(0, tamanhoMapa);
 
-        if (mapa[y][x] == "A") {
-            mapa[y][x] = "S";
-        }
-        else
-        {
-            i--;
-        }
-    }
-}
 function embarcaçõesBot(quantidadeEmbarcações ,quantidadeEspaços , letraEmbarcação)
 {
     for(let j = 0; j < quantidadeEmbarcações; j++)
@@ -50,7 +36,7 @@ function embarcaçõesBot(quantidadeEmbarcações ,quantidadeEspaços , letraEmb
             //O número máximo do random está contido no conjunto de possibilidades pra embarcação, por isso o +1
             let x = random(0, tamanhoMapa - quantidadeEspaços + 1);
             let y = random(0, tamanhoMapa);    
-
+            
             //for de validação da posição randomica
             for(let k = 0; k < quantidadeEspaços; k++)
             {
@@ -69,7 +55,9 @@ function embarcaçõesBot(quantidadeEmbarcações ,quantidadeEspaços , letraEmb
             {
                 for(let l = 0; l < quantidadeEspaços; l++)
                 {
+                    console.log(mapa[y][x+1]);
                     mapa[y][x + l] == letraEmbarcação;
+                    console.log(mapa[y][x+1]);                    
                 }
 
             }
@@ -80,7 +68,6 @@ function embarcaçõesBot(quantidadeEmbarcações ,quantidadeEspaços , letraEmb
         }
         else
         {
-            console.log("Entrou no else")
         }
     }
 }
