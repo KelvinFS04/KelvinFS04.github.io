@@ -1,6 +1,11 @@
 
-
-//declarando o mapa
+//com as quantidade de embarcações e váriaveis para a validação dessa forma, possíveis mudanças serão mais simples
+const quantidadeSubmarinos = 5; const quantidadeEspaçosSubmarino = 1; const letraSubmarino = "S";
+const quantidadeTorpedeiros = 4; const quantidadeEspaçosTorpedeiros = 2; const letraTorpedeiro = "T";
+const quantidadeCruzadores = 3; const quantidadeEspaçosCruzadores = 3; const letraCruzador = "C";
+const quantidadePortaAviões = 2; const quantidadeEspaçosPortaAviões = 4; const letraPortaAviões = "P";
+let horizontal = true;
+let espaçoLivre = false;
 const tamanhoMapa = 10;
 //array de arrays, equivalente a uma matriz
 let mapa = new Array(); 
@@ -13,18 +18,38 @@ for (let i = 0; i < tamanhoMapa; i++) {
 }
 
 
-//com as quantidade de embarcações e váriaveis para a validação dessa forma, possíveis mudanças serão mais simples
+//função que gera o mapa
+function geraMapa()
+{
+    for (let j = 0; j < tamanhoMapa; j++)
+    {
+        let id = "tr"+j;
+        let botãoCriado = document.createElement("td");
+        botãoCriado.setAttribute("id", id);
+    }
+    for (let k = 0; k < tamanhoMapa ; k++) 
+    {
+        for (let l = 0; l < tamanhoMapa; l++)
+        {
+            let id = "tdx"+k+"y"+j; //crio o id da td
+            let auxId = "tr"+l; //crio id auxiliar para usar o id da tr criada anteriormente
+            let tr = document.getElementById(auxId).innerHTML; //uso a tr criada
+            let tdCriado = document.createElement("td"); //crio o elemento td
+            tdCriado.setAttribute("id", id); 
+            tr.appendChild(tdCriado)
+        }
+    }
+}
 
-const quantidadeSubmarinos = 5; const quantidadeEspaçosSubmarino = 1; const letraSubmarino = "S";
-const quantidadeTorpedeiros = 4; const quantidadeEspaçosTorpedeiros = 2; const letraTorpedeiro = "T";
-const quantidadeCruzadores = 3; const quantidadeEspaçosCruzadores = 3; const letraCruzador = "C";
-const quantidadePortaAviões = 2; const quantidadeEspaçosPortaAviões = 4; const letraPortaAviões = "P";
-let horizontal = true;
-let espaçoLivre = false;
 
+//funções para a criação das embarcações
 function adicionaEmbarcaçõesBot() 
 {
-    embarcaçõesBot(quantidadeEspaçosTorpedeiros, quantidadeEspaçosTorpedeiros, letraTorpedeiro);
+    embarcaçõesBot(quantidadePortaAviões, quantidadeEspaçosPortaAviões, letraPortaAviões);
+    embarcaçõesBot(quantidadeCruzadores, quantidadeEspaçosCruzadores, letraCruzador);
+    embarcaçõesBot(quantidadeTorpedeiros, quantidadeEspaçosTorpedeiros, letraTorpedeiro);
+    embarcaçõesBot(quantidadeSubmarinos, quantidadeEspaçosSubmarino, letraSubmarino);
+    console.log(mapa);
 }
 
 function embarcaçõesBot(quantidadeEmbarcações ,quantidadeEspaços , letraEmbarcação)
@@ -55,15 +80,13 @@ function embarcaçõesBot(quantidadeEmbarcações ,quantidadeEspaços , letraEmb
             {
                 for(let l = 0; l < quantidadeEspaços; l++)
                 {
-                    console.log(mapa[y][x+1]);
-                    mapa[y][x + l] = letraEmbarcação;
-                    console.log(mapa[y][x+1]);                    
+                    mapa[y][x + l] = letraEmbarcação;                    
                 }
 
             }
             else
             {
-                i--
+                j--
             }
         }
         else
