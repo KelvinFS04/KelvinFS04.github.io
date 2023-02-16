@@ -21,24 +21,6 @@ for (let i = 0; i < tamanhoMapa; i++) {
 //função que gera o mapa
 function geraMapa()
 {
-    for (let j = 0; j < tamanhoMapa; j++)
-    {
-        let id = "tr"+j;
-        let botãoCriado = document.createElement("td");
-        botãoCriado.setAttribute("id", id);
-    }
-    for (let k = 0; k < tamanhoMapa ; k++) 
-    {
-        for (let l = 0; l < tamanhoMapa; l++)
-        {
-            let id = "tdx"+k+"y"+j; //crio o id da td
-            let auxId = "tr"+l; //crio id auxiliar para usar o id da tr criada anteriormente
-            let tr = document.getElementById(auxId).innerHTML; //uso a tr criada
-            let tdCriado = document.createElement("td"); //crio o elemento td
-            tdCriado.setAttribute("id", id); 
-            tr.appendChild(tdCriado)
-        }
-    }
 }
 
 
