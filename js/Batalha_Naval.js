@@ -1,4 +1,3 @@
-
 //com as quantidade de embarcações e váriaveis para a validação dessa forma, possíveis mudanças serão mais simples
 const quantidadeSubmarinos = 5; const quantidadeEspaçosSubmarino = 1; const letraSubmarino = "S";
 const quantidadeTorpedeiros = 4; const quantidadeEspaçosTorpedeiros = 2; const letraTorpedeiro = "T";
@@ -7,7 +6,7 @@ const quantidadePortaAviões = 2; const quantidadeEspaçosPortaAviões = 4; cons
 let horizontal = true;
 let espaçoLivre = false;
 const tamanhoMapa = 10;
-//array de arrays, equivalente a uma matriz
+//array de arrays, equivalente a uma matriz para o mapa
 let mapa = new Array(); 
 for (let i = 0; i < tamanhoMapa; i++) {
     vetor = new Array();
@@ -18,9 +17,42 @@ for (let i = 0; i < tamanhoMapa; i++) {
 }
 
 
+//função de ataque ao bot
+function ataque(id)
+{
+    // TODO: [Terminar função de ataque]
+    console.log("Ataque na célula: " + id);
+}
+
+
 //função que gera o mapa
 function geraMapa()
 {
+    //criando o elemento tabela
+    let tabela = document.createElement("table");
+    tabela.setAttribute("id", "mapa");
+
+    //criando as rows e cells da tabela
+    for (let k = 0; k < tamanhoMapa; k++) 
+    {
+        let idLinha = "linha" + k; 
+        let linha = tabela.insertRow();
+        linha.setAttribute("id", idLinha);
+        for (let l = 0; l < tamanhoMapa; l++) 
+        {
+            let idCélula = "célula" + k + l;
+            let idBotão = "botão" + k + l;
+            let classBotão = "botão" + k + l;
+            let célula = linha.insertCell();
+            célula.setAttribute("id", idCélula);
+            // TODO: [Trocar o "A" por uma img] 
+            célula.innerHTML = '<button id="' + idBotão + '" class="' + classBotão + '" onclick="ataque(this.id)">A</button>';
+        }
+        let divMapa = document.getElementById("divMapa");
+        divMapa.appendChild(tabela);
+    }
+
+    adicionaEmbarcaçõesBot();
 }
 
 
@@ -33,7 +65,6 @@ function adicionaEmbarcaçõesBot()
     embarcaçõesBot(quantidadeSubmarinos, quantidadeEspaçosSubmarino, letraSubmarino);
     console.log(mapa);
 }
-
 function embarcaçõesBot(quantidadeEmbarcações ,quantidadeEspaços , letraEmbarcação)
 {
     for(let j = 0; j < quantidadeEmbarcações; j++)
@@ -54,6 +85,7 @@ function embarcaçõesBot(quantidadeEmbarcações ,quantidadeEspaços , letraEmb
                 else
                 {
                     espaçoLivre = false;
+                    break;
                 }
             }
 
@@ -71,12 +103,14 @@ function embarcaçõesBot(quantidadeEmbarcações ,quantidadeEspaços , letraEmb
                 j--
             }
         }
+        // TODO: [Adiconar vertical]
         else
         {
         }
     }
 }
 
+//função randomica
 function random(min, max)
 {
     min = Math.ceil(min)
