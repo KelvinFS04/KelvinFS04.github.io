@@ -1,0 +1,12 @@
+
+
+.botões
+{
+    font-size: em;
+    background-color: white;
+}
+
+.botões:hover
+{
+    cursor: pointer;
+}

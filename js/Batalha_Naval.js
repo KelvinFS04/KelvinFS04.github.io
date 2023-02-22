@@ -42,12 +42,11 @@ function geraMapa()
         {
             let idCélula = "célula" + k + l;
             let idBotão = "botão" + k + l;
-            let classBotão = "botão" + k + l;
             let célula = linha.insertCell();
             célula.setAttribute("id", idCélula);
             // TODO: [Trocar o "A" por uma img]
             // TODO: [Trocar lógica de atribuição da função ataque] 
-            célula.innerHTML = '<button id="' + idBotão + '" class="' + classBotão + '" onclick="ataque(this.id)">A</button>';
+            célula.innerHTML = '<button id="' + idBotão + '" class="botões" onclick="ataque(this.id)">A</button>';
         }
         let divMapa = document.getElementById("divMapa");
         divMapa.appendChild(tabela);
