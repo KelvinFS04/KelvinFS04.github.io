@@ -1,9 +1,10 @@
+//TODO: [Fazer mapa e posicionamento do jogador]
+
 //com as quantidade de embarcações e váriaveis para a validação dessa forma, possíveis mudanças serão mais simples
 const quantidadeSubmarinos = 5; const quantidadeEspaçosSubmarino = 1; const letraSubmarino = "S";
 const quantidadeTorpedeiros = 4; const quantidadeEspaçosTorpedeiros = 2; const letraTorpedeiro = "T";
 const quantidadeCruzadores = 3; const quantidadeEspaçosCruzadores = 3; const letraCruzador = "C";
 const quantidadePortaAviões = 2; const quantidadeEspaçosPortaAviões = 4; const letraPortaAviões = "P";
-let horizontal = true;
 let espaçoLivre = false;
 const tamanhoMapa = 10;
 //array de arrays, equivalente a uma matriz para o mapa
@@ -69,6 +70,16 @@ function embarcaçõesBot(quantidadeEmbarcações ,quantidadeEspaços , letraEmb
 {
     for(let j = 0; j < quantidadeEmbarcações; j++)
     {
+        let horizontal = true;
+        let randomico = random(0,2);
+        if (randomico == 0) 
+        {
+            horizontal = true;
+        }
+        else
+        {
+            horizontal = false;
+        }
         if(horizontal == true)
         {
             //O número máximo do random está contido no conjunto de possibilidades pra embarcação, por isso o +1
@@ -103,9 +114,40 @@ function embarcaçõesBot(quantidadeEmbarcações ,quantidadeEspaços , letraEmb
                 j--
             }
         }
-        // TODO: [Adiconar vertical]
         else
         {
+            
+            //O número máximo do random está contido no conjunto de possibilidades para embarcação, por isso o +1
+            let x = random(0, tamanhoMapa);
+            let y = random(0, tamanhoMapa - quantidadeEspaços + 1);    
+            
+            //for de validação da posição randomica
+            for(let k = 0; k < quantidadeEspaços; k++)
+            {
+                if (mapa[y][x + k] == "A") 
+                {
+                    espaçoLivre = true;
+                }
+                else
+                {
+                    espaçoLivre = false;
+                    break;
+                }
+            }
+
+            //if com o posicionamento das embarcações
+            if (espaçoLivre == true) 
+            {
+                for(let l = 0; l < quantidadeEspaços; l++)
+                {
+                    mapa[y + l][x] = letraEmbarcação;                    
+                }
+
+            }
+            else
+            {
+                j--
+            }
         }
     }
 }
@@ -113,8 +155,8 @@ function embarcaçõesBot(quantidadeEmbarcações ,quantidadeEspaços , letraEmb
 //função randomica
 function random(min, max)
 {
-    min = Math.ceil(min)
-    max = Math.floor(max)
+    min = Math.ceil(min);
+    max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min);
     //valor min incluso, mas max não
 }
