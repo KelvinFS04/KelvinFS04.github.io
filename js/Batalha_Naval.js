@@ -5,8 +5,6 @@ const quantidadeSubmarinos = 5; const quantidadeEspaçosSubmarino = 1; const let
 const quantidadeTorpedeiros = 4; const quantidadeEspaçosTorpedeiros = 2; const letraTorpedeiro = "T";
 const quantidadeCruzadores = 3; const quantidadeEspaçosCruzadores = 3; const letraCruzador = "C";
 const quantidadePortaAviões = 2; const quantidadeEspaçosPortaAviões = 4; const letraPortaAviões = "P";
-let espaçoLivre = false;
-const tamanhoMapa = 10;
 //array de arrays, equivalente a uma matriz para o mapa
 let mapa = new Array(); 
 for (let i = 0; i < tamanhoMapa; i++) {
@@ -72,14 +70,12 @@ function embarcaçõesBot(quantidadeEmbarcações ,quantidadeEspaços , letraEmb
     {
         let horizontal = true;
         let randomico = random(0,2);
+        
         if (randomico == 0) 
-        {
             horizontal = true;
-        }
         else
-        {
             horizontal = false;
-        }
+
         if(horizontal == true)
         {
             //O número máximo do random está contido no conjunto de possibilidades pra embarcação, por isso o +1
@@ -124,7 +120,7 @@ function embarcaçõesBot(quantidadeEmbarcações ,quantidadeEspaços , letraEmb
             //for de validação da posição randomica
             for(let k = 0; k < quantidadeEspaços; k++)
             {
-                if (mapa[y][x + k] == "A") 
+                if (mapa[y + k][x] == "A") 
                 {
                     espaçoLivre = true;
                 }
