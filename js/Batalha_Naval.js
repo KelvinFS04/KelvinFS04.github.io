@@ -6,6 +6,7 @@ const quantidadeTorpedeiros = 4; const quantidadeEspaçosTorpedeiros = 2; const 
 const quantidadeCruzadores = 3; const quantidadeEspaçosCruzadores = 3; const letraCruzador = "C";
 const quantidadePortaAviões = 2; const quantidadeEspaçosPortaAviões = 4; const letraPortaAviões = "P";
 //array de arrays, equivalente a uma matriz para o mapa
+const tamanhoMapa = 10;
 let mapa = new Array(); 
 for (let i = 0; i < tamanhoMapa; i++) {
     vetor = new Array();
