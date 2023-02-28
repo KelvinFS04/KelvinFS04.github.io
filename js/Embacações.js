@@ -3,7 +3,7 @@ import { tabela} from "./Batalha_Naval";
 const tamanhoMapa = 10; 
 
 
-class Embarcações
+class Embarcação
 { 
     constructor(quantidadeEmbarcações ,quantidadeEspaços , letraEmbarcação)
     {
@@ -11,6 +11,7 @@ class Embarcações
         this.quantidadeEspaços = quantidadeEspaços;
         this.letraEmbarcação = letraEmbarcação;
     }
+    teste(){console.log("Teste")}
     addEmbarcações()
     {
         quantidadeEmbarcações = this.quantidadeEmbarcações;
@@ -105,4 +106,5 @@ class Embarcações
         return Math.floor(Math.random() * (max - min) + min);
         //valor min incluso, mas max não
     }
+
 }

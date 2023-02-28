@@ -1,8 +1,9 @@
 //TODO: [Fazer mapa e posicionamento do jogador]
+//TODO: [Testar "<script type="module" src="local"></script>" no html]
 //teste
-let teste = new embarcaçõesBot(5,1,'s');
-console.log(teste);
-
+let teste = new Embarcação(5,1,'s');
+console.log(teste.teste());
+console.log(teste)
 
 
 //com as quantidade de embarcações e váriaveis para a validação dessa forma, possíveis mudanças serão mais simples
