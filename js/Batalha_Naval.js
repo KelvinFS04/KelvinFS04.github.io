@@ -1,13 +1,18 @@
 //TODO: [Fazer mapa e posicionamento do jogador]
+//teste
+let teste = new embarcaçõesBot(5,1,'s');
+console.log(teste);
+
+
 
 //com as quantidade de embarcações e váriaveis para a validação dessa forma, possíveis mudanças serão mais simples
-const quantidadeSubmarinos = 5; const quantidadeEspaçosSubmarino = 1; const letraSubmarino = "S";
-const quantidadeTorpedeiros = 4; const quantidadeEspaçosTorpedeiros = 2; const letraTorpedeiro = "T";
-const quantidadeCruzadores = 3; const quantidadeEspaçosCruzadores = 3; const letraCruzador = "C";
-const quantidadePortaAviões = 2; const quantidadeEspaçosPortaAviões = 4; const letraPortaAviões = "P";
+const quantidadeSubmarinos = 5, quantidadeEspaçosSubmarino = 1, letraSubmarino = "S";
+const quantidadeTorpedeiros = 4, quantidadeEspaçosTorpedeiros = 2, letraTorpedeiro = "T";
+const quantidadeCruzadores = 3, quantidadeEspaçosCruzadores = 3, letraCruzador = "C";
+const quantidadePortaAviões = 2, quantidadeEspaçosPortaAviões = 4, letraPortaAviões = "P";
 //array de arrays, equivalente a uma matriz para o mapa
 const tamanhoMapa = 10;
-let mapa = new Array(); 
+let mapa = new Array();     
 for (let i = 0; i < tamanhoMapa; i++) {
     vetor = new Array();
     mapa.push(vetor);
@@ -15,13 +20,10 @@ for (let i = 0; i < tamanhoMapa; i++) {
         vetor.push("A");
     }
 }
-
-
 //função de ataque ao bot
 function ataque(id)
-{
-    // TODO: [Terminar função de ataque]
-    console.log("Ataque na célula: " + id);
+{   
+    console.log("Ataque na célula: " + id);   
 }
 
 
@@ -41,11 +43,9 @@ function geraMapa()
         for (let l = 0; l < tamanhoMapa; l++) 
         {
             let idCélula = "célula" + k + l;
-            let idBotão = "botão" + k + l;
+            let idBotão = "" + k + l;
             let célula = linha.insertCell();
             célula.setAttribute("id", idCélula);
-            // TODO: [Trocar o "A" por uma img]
-            // TODO: [Trocar lógica de atribuição da função ataque] 
             célula.innerHTML = '<button id="' + idBotão + '" class="botões" onclick="ataque(this.id)">A</button>';
         }
         let divMapa = document.getElementById("divMapa");
@@ -54,7 +54,6 @@ function geraMapa()
 
     adicionaEmbarcaçõesBot();
 }
-
 
 //funções para a criação das embarcações
 function adicionaEmbarcaçõesBot() 
