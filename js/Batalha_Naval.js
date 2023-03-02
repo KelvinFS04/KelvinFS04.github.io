@@ -1,41 +1,130 @@
 //TODO: [Fazer mapa e posicionamento do jogador]
-//TODO: [Testar "<script type="module" src="local"></script>" no html]
-//teste
-let teste = new Embarcação(5,1,'s');
-console.log(teste.teste());
-console.log(teste)
-
-
-//com as quantidade de embarcações e váriaveis para a validação dessa forma, possíveis mudanças serão mais simples
-const quantidadeSubmarinos = 5, quantidadeEspaçosSubmarino = 1, letraSubmarino = "S";
-const quantidadeTorpedeiros = 4, quantidadeEspaçosTorpedeiros = 2, letraTorpedeiro = "T";
-const quantidadeCruzadores = 3, quantidadeEspaçosCruzadores = 3, letraCruzador = "C";
-const quantidadePortaAviões = 2, quantidadeEspaçosPortaAviões = 4, letraPortaAviões = "P";
-//array de arrays, equivalente a uma matriz para o mapa
+//variáveis no escopo global
 const tamanhoMapa = 10;
-let mapa = new Array();     
-for (let i = 0; i < tamanhoMapa; i++) {
-    vetor = new Array();
-    mapa.push(vetor);
-    for(let j = 0; j < tamanhoMapa; j++) {
-        vetor.push("A");
+let mapa = new Array(); 
+
+
+class Embarcação
+{ 
+    constructor(quantidadeEmbarcações ,quantidadeEspaços , letraEmbarcação)
+    {
+        this.quantidadeEmbarcações = quantidadeEmbarcações;
+        this.quantidadeEspaços = quantidadeEspaços;
+        this.letraEmbarcação = letraEmbarcação;
+        console.log('ola')
     }
-}
-//função de ataque ao bot
-function ataque(id)
-{   
-    console.log("Ataque na célula: " + id);   
+    addEmbarcação()
+    {
+        quantidadeEmbarcações = this.quantidadeEmbarcações;
+        quantidadeEspaços = this.quantidadeEspaços;
+        letraEmbarcação = this.letraEmbarcação;
+        let espaçoLivre = false;
+        for(let j = 0; j < quantidadeEmbarcações; j++)
+        {
+            let horizontal = true;
+            let randomico = random(0,2);
+            
+            if (randomico == 0) 
+                horizontal = true;
+            else
+                horizontal = false;
+
+            if(horizontal == true)
+            {
+                //O número máximo do random está contido no conjunto de possibilidades pra embarcação, por isso o +1
+                let x = random(0, tamanhoMapa - quantidadeEspaços + 1);
+                let y = random(0, tamanhoMapa);    
+                
+                //for de validação da posição randomica
+                for(let k = 0; k < quantidadeEspaços; k++)
+                {
+                    if (mapa[y][x + k] == "A") 
+                    {
+                        espaçoLivre = true;
+                    }
+                    else
+                    {
+                        espaçoLivre = false;
+                        break;
+                    }
+                }
+
+                //if com o posicionamento das embarcações
+                if (espaçoLivre == true) 
+                {
+                    for(let l = 0; l < quantidadeEspaços; l++)
+                    {
+                        mapa[y][x + l] = letraEmbarcação;                    
+                    }
+
+                }
+                else
+                {
+                    j--
+                }
+            }
+            else
+            {
+                
+                //O número máximo do random está contido no conjunto de possibilidades para embarcação, por isso o +1
+                let x = random(0, tamanhoMapa);
+                let y = random(0, tamanhoMapa - quantidadeEspaços + 1);    
+                
+                //for de validação da posição randomica
+                for(let k = 0; k < quantidadeEspaços; k++)
+                {
+                    if (mapa[y + k][x] == "A") 
+                    {
+                        espaçoLivre = true;
+                    }
+                    else
+                    {
+                        espaçoLivre = false;
+                        break;
+                    }
+                }
+
+                //if com o posicionamento das embarcações
+                if (espaçoLivre == true) 
+                {
+                    for(let l = 0; l < quantidadeEspaços; l++)
+                    {
+                        mapa[y + l][x] = letraEmbarcação;                    
+                    }
+
+                }
+                else
+                {
+                    j--
+                }
+            }
+        }
+        console.log(mapa);
+    }
+    random(min, max)
+    {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min) + min);
+        //valor min incluso, mas max não
+    }
+
 }
 
-
-//função que gera o mapa
-function geraMapa()
+function mapa() 
 {
+    //array de arrays, equivalente a uma matriz para o mapa
+    for (let i = 0; i < tamanhoMapa; i++) {
+        vetor = new Array();
+        mapa.push(vetor);
+        for(let j = 0; j < tamanhoMapa; j++) {
+            vetor.push("A");
+        }
+    }
+    
     //criando o elemento tabela
     let tabela = document.createElement("table");
     tabela.setAttribute("id", "mapa");
-
-    //criando as rows e cells da tabela
     for (let k = 0; k < tamanhoMapa; k++) 
     {
         let idLinha = "linha" + k; 
@@ -52,108 +141,13 @@ function geraMapa()
         let divMapa = document.getElementById("divMapa");
         divMapa.appendChild(tabela);
     }
-
-    adicionaEmbarcaçõesBot();
+    
+    
 }
 
-//funções para a criação das embarcações
-function adicionaEmbarcaçõesBot() 
-{
-    embarcaçõesBot(quantidadePortaAviões, quantidadeEspaçosPortaAviões, letraPortaAviões);
-    embarcaçõesBot(quantidadeCruzadores, quantidadeEspaçosCruzadores, letraCruzador);
-    embarcaçõesBot(quantidadeTorpedeiros, quantidadeEspaçosTorpedeiros, letraTorpedeiro);
-    embarcaçõesBot(quantidadeSubmarinos, quantidadeEspaçosSubmarino, letraSubmarino);
-    console.log(mapa);
-}
-function embarcaçõesBot(quantidadeEmbarcações ,quantidadeEspaços , letraEmbarcação)
-{
-    for(let j = 0; j < quantidadeEmbarcações; j++)
-    {
-        let horizontal = true;
-        let randomico = random(0,2);
-        
-        if (randomico == 0) 
-            horizontal = true;
-        else
-            horizontal = false;
-
-        if(horizontal == true)
-        {
-            //O número máximo do random está contido no conjunto de possibilidades pra embarcação, por isso o +1
-            let x = random(0, tamanhoMapa - quantidadeEspaços + 1);
-            let y = random(0, tamanhoMapa);    
-            
-            //for de validação da posição randomica
-            for(let k = 0; k < quantidadeEspaços; k++)
-            {
-                if (mapa[y][x + k] == "A") 
-                {
-                    espaçoLivre = true;
-                }
-                else
-                {
-                    espaçoLivre = false;
-                    break;
-                }
-            }
-
-            //if com o posicionamento das embarcações
-            if (espaçoLivre == true) 
-            {
-                for(let l = 0; l < quantidadeEspaços; l++)
-                {
-                    mapa[y][x + l] = letraEmbarcação;                    
-                }
-
-            }
-            else
-            {
-                j--
-            }
-        }
-        else
-        {
-            
-            //O número máximo do random está contido no conjunto de possibilidades para embarcação, por isso o +1
-            let x = random(0, tamanhoMapa);
-            let y = random(0, tamanhoMapa - quantidadeEspaços + 1);    
-            
-            //for de validação da posição randomica
-            for(let k = 0; k < quantidadeEspaços; k++)
-            {
-                if (mapa[y + k][x] == "A") 
-                {
-                    espaçoLivre = true;
-                }
-                else
-                {
-                    espaçoLivre = false;
-                    break;
-                }
-            }
-
-            //if com o posicionamento das embarcações
-            if (espaçoLivre == true) 
-            {
-                for(let l = 0; l < quantidadeEspaços; l++)
-                {
-                    mapa[y + l][x] = letraEmbarcação;                    
-                }
-
-            }
-            else
-            {
-                j--
-            }
-        }
-    }
+//função de ataque ao bot
+function ataque(id)
+{   
+    console.log("Ataque na célula: " + id);   
 }
 
-//função randomica
-function random(min, max)
-{
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min);
-    //valor min incluso, mas max não
-}
