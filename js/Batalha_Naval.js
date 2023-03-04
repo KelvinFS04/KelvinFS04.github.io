@@ -1,28 +1,81 @@
 //TODO: [Fazer mapa e posicionamento do jogador]
 //variáveis no escopo global
 const tamanhoMapa = 10;
-let mapa = new Array(); 
+let mapa = new Array();     
 
 
-class Embarcação
+    //array de arrays, equivalente a uma matriz para o mapa
+    for (let i = 0; i < tamanhoMapa; i++) {
+        vetor = new Array();
+        mapa.push(vetor);
+        for(let j = 0; j < tamanhoMapa; j++) {
+            vetor.push("A");
+        }
+    }
+    
+    //criando o elemento tabela
+    let tabela = document.createElement("table");
+    tabela.setAttribute("id", "mapa");
+    for (let k = 0; k < tamanhoMapa; k++) 
+    {
+        let idLinha = "linha" + k; 
+        let linha = tabela.insertRow();
+        linha.setAttribute("id", idLinha);
+        for (let l = 0; l < tamanhoMapa; l++) 
+        {
+            let idCélula = "célula" + k + l;
+            let idBotão = "" + k + l;
+            let célula = linha.insertCell();
+            célula.setAttribute("id", idCélula);
+            célula.innerHTML = '<button id="' + idBotão + '" class="botões" onclick="ataque(this.id)">A</button>';
+        }
+        let divMapa = document.getElementById("divMapa");
+        divMapa.appendChild(tabela);
+    }
+    
+    
+
+
+function inicia() 
+{
+    geraMapa();
+    
+}
+
+//função de ataque ao bot
+function ataque(id)
+{   
+    console.log("Ataque na célula: " + id);   
+}
+
+
+//Testes
+class EmbarcacaoBot
 { 
     constructor(quantidadeEmbarcações ,quantidadeEspaços , letraEmbarcação)
     {
         this.quantidadeEmbarcações = quantidadeEmbarcações;
         this.quantidadeEspaços = quantidadeEspaços;
         this.letraEmbarcação = letraEmbarcação;
-        console.log('ola')
+    }
+    random(min, max)
+    {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min) + min);
+        //valor min incluso, mas max não
     }
     addEmbarcação()
     {
-        quantidadeEmbarcações = this.quantidadeEmbarcações;
-        quantidadeEspaços = this.quantidadeEspaços;
-        letraEmbarcação = this.letraEmbarcação;
+        console.log("entrou em addembarcação")
+        let quantidadeEmbarcações = this.quantidadeEmbarcações;
+        let quantidadeEspaços = this.quantidadeEspaços;
+        let letraEmbarcação = this.letraEmbarcação;
         let espaçoLivre = false;
         for(let j = 0; j < quantidadeEmbarcações; j++)
         {
             let horizontal = true;
-            let randomico = random(0,2);
+            let randomico = this.random(0,2);
             
             if (randomico == 0) 
                 horizontal = true;
@@ -32,8 +85,8 @@ class Embarcação
             if(horizontal == true)
             {
                 //O número máximo do random está contido no conjunto de possibilidades pra embarcação, por isso o +1
-                let x = random(0, tamanhoMapa - quantidadeEspaços + 1);
-                let y = random(0, tamanhoMapa);    
+                let x = this.random(0, tamanhoMapa - quantidadeEspaços + 1);
+                let y = this.random(0, tamanhoMapa);    
                 
                 //for de validação da posição randomica
                 for(let k = 0; k < quantidadeEspaços; k++)
@@ -67,8 +120,8 @@ class Embarcação
             {
                 
                 //O número máximo do random está contido no conjunto de possibilidades para embarcação, por isso o +1
-                let x = random(0, tamanhoMapa);
-                let y = random(0, tamanhoMapa - quantidadeEspaços + 1);    
+                let x = this.random(0, tamanhoMapa);
+                let y = this.random(0, tamanhoMapa - quantidadeEspaços + 1);    
                 
                 //for de validação da posição randomica
                 for(let k = 0; k < quantidadeEspaços; k++)
@@ -101,53 +154,15 @@ class Embarcação
         }
         console.log(mapa);
     }
-    random(min, max)
-    {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min) + min);
-        //valor min incluso, mas max não
-    }
+    
 
 }
 
-function mapa() 
-{
-    //array de arrays, equivalente a uma matriz para o mapa
-    for (let i = 0; i < tamanhoMapa; i++) {
-        vetor = new Array();
-        mapa.push(vetor);
-        for(let j = 0; j < tamanhoMapa; j++) {
-            vetor.push("A");
-        }
-    }
-    
-    //criando o elemento tabela
-    let tabela = document.createElement("table");
-    tabela.setAttribute("id", "mapa");
-    for (let k = 0; k < tamanhoMapa; k++) 
-    {
-        let idLinha = "linha" + k; 
-        let linha = tabela.insertRow();
-        linha.setAttribute("id", idLinha);
-        for (let l = 0; l < tamanhoMapa; l++) 
-        {
-            let idCélula = "célula" + k + l;
-            let idBotão = "" + k + l;
-            let célula = linha.insertCell();
-            célula.setAttribute("id", idCélula);
-            célula.innerHTML = '<button id="' + idBotão + '" class="botões" onclick="ataque(this.id)">A</button>';
-        }
-        let divMapa = document.getElementById("divMapa");
-        divMapa.appendChild(tabela);
-    }
-    
-    
-}
 
-//função de ataque ao bot
-function ataque(id)
-{   
-    console.log("Ataque na célula: " + id);   
-}
-
+let tst1 = new EmbarcacaoBot(1, 1, 't');
+let tst2 = new EmbarcacaoBot(1, 2, 't');
+let tst3 = new EmbarcacaoBot(1, 3, 't');
+tst1.addEmbarcação();
+tst2.addEmbarcação();
+tst3.addEmbarcação();
+console.log(mapa)
