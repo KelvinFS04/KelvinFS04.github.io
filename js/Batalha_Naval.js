@@ -1,45 +1,35 @@
-//TODO: [Fazer mapa e posicionamento do jogador]
+
 //variáveis no escopo global
 const tamanhoMapa = 10;
-let mapa = new Array();     
+let mapa = new Array(); 
 
-
-    //array de arrays, equivalente a uma matriz para o mapa
-    for (let i = 0; i < tamanhoMapa; i++) {
-        vetor = new Array();
-        mapa.push(vetor);
-        for(let j = 0; j < tamanhoMapa; j++) {
-            vetor.push("A");
-        }
+//array de arrays, equivalente a uma matriz para o mapa
+for (let i = 0; i < tamanhoMapa; i++) {
+    vetor = new Array();
+    mapa.push(vetor);
+    for(let j = 0; j < tamanhoMapa; j++) {
+        vetor.push("A");
     }
-    
-    //criando o elemento tabela
-    let tabela = document.createElement("table");
-    tabela.setAttribute("id", "mapa");
-    for (let k = 0; k < tamanhoMapa; k++) 
-    {
-        let idLinha = "linha" + k; 
-        let linha = tabela.insertRow();
-        linha.setAttribute("id", idLinha);
-        for (let l = 0; l < tamanhoMapa; l++) 
-        {
-            let idCélula = "célula" + k + l;
-            let idBotão = "" + k + l;
-            let célula = linha.insertCell();
-            célula.setAttribute("id", idCélula);
-            célula.innerHTML = '<button id="' + idBotão + '" class="botões" onclick="ataque(this.id)">A</button>';
-        }
-        let divMapa = document.getElementById("divMapa");
-        divMapa.appendChild(tabela);
-    }
-    
-    
+}
 
-
-function inicia() 
+//criando o elemento tabela
+let tabela = document.createElement("table");
+tabela.setAttribute("id", "mapa");
+for (let k = 0; k < tamanhoMapa; k++) 
 {
-    geraMapa();
-    
+    let idLinha = "linha" + k; 
+    let linha = tabela.insertRow();
+    linha.setAttribute("id", idLinha);
+    for (let l = 0; l < tamanhoMapa; l++) 
+    {
+        let idCélula = "célula" + k + l;
+        let idBotão = "" + k + l;
+        let célula = linha.insertCell();
+        célula.setAttribute("id", idCélula);
+        célula.innerHTML = '<button id="' + idBotão + '" class="botões" onclick="ataque(this.id)">A</button>';
+    }
+    let divMapa = document.getElementById("divMapa");
+    divMapa.appendChild(tabela);
 }
 
 //função de ataque ao bot
@@ -48,8 +38,6 @@ function ataque(id)
     console.log("Ataque na célula: " + id);   
 }
 
-
-//Testes
 class EmbarcacaoBot
 { 
     constructor(quantidadeEmbarcações ,quantidadeEspaços , letraEmbarcação)
@@ -60,14 +48,13 @@ class EmbarcacaoBot
     }
     random(min, max)
     {
-        min = Math.ceil(min);
-        max = Math.floor(max);
+        min = Math.ceil(min);//arredonda para cima
+        max = Math.floor(max);//arredonda para baixo
         return Math.floor(Math.random() * (max - min) + min);
         //valor min incluso, mas max não
     }
     addEmbarcação()
     {
-        console.log("entrou em addembarcação")
         let quantidadeEmbarcações = this.quantidadeEmbarcações;
         let quantidadeEspaços = this.quantidadeEspaços;
         let letraEmbarcação = this.letraEmbarcação;
@@ -148,17 +135,16 @@ class EmbarcacaoBot
                 }
                 else
                 {
-                    j--
+                    j--;
                 }
             }
         }
-        console.log(mapa);
     }
     
 
 }
 
-
+//testes
 let tst1 = new EmbarcacaoBot(1, 1, 't');
 let tst2 = new EmbarcacaoBot(1, 2, 't');
 let tst3 = new EmbarcacaoBot(1, 3, 't');
