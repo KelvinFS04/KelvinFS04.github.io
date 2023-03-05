@@ -35,7 +35,10 @@ for (let k = 0; k < tamanhoMapa; k++)
 //função de ataque ao bot
 function ataque(id)
 {   
-    console.log("Ataque na célula: " + id);   
+    console.log("Ataque na célula: " + id);     
+    let y = id.substring(1);
+    let x = id.substring(0,1);
+    console.log(mapa[x][y])
 }
 
 class EmbarcacaoBot
@@ -45,6 +48,7 @@ class EmbarcacaoBot
         this.quantidadeEmbarcações = quantidadeEmbarcações;
         this.quantidadeEspaços = quantidadeEspaços;
         this.letraEmbarcação = letraEmbarcação;
+        this.posições = new Array();
     }
     random(min, max)
     {
@@ -94,7 +98,9 @@ class EmbarcacaoBot
                 {
                     for(let l = 0; l < quantidadeEspaços; l++)
                     {
-                        mapa[y][x + l] = letraEmbarcação;                    
+                        mapa[y][x + l] = letraEmbarcação; 
+                        let soma = x + l
+                        this.posições[l] = y + '' + soma + ''              
                     }
 
                 }
@@ -129,7 +135,9 @@ class EmbarcacaoBot
                 {
                     for(let l = 0; l < quantidadeEspaços; l++)
                     {
-                        mapa[y + l][x] = letraEmbarcação;                    
+                        mapa[y + l][x] = letraEmbarcação;
+                        let soma = y + l
+                        this.posições[l] =  soma + '' + x + '';
                     }
 
                 }
@@ -151,4 +159,5 @@ let tst3 = new EmbarcacaoBot(1, 3, 't');
 tst1.addEmbarcação();
 tst2.addEmbarcação();
 tst3.addEmbarcação();
+console.log(tst3.posições, tst2.posições, tst1.posições)
 console.log(mapa)
