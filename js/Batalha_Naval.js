@@ -2,8 +2,9 @@
 //variáveis no escopo global
 const tamanhoMapa = 10;
 let mapa = new Array(); 
+let embarcações = new Array();
 
-//array de arrays, equivalente a uma matriz para o mapa
+//array de arrays, equivalente a uma matriz, para o mapa
 for (let i = 0; i < tamanhoMapa; i++) {
     vetor = new Array();
     mapa.push(vetor);
@@ -33,6 +34,7 @@ for (let k = 0; k < tamanhoMapa; k++)
 }
 
 //função de ataque ao bot
+//TODO: [Fazer função de ataque]
 function ataque(id)
 {   
     console.log("Ataque na célula: " + id);     
@@ -154,10 +156,14 @@ class EmbarcacaoBot
 
 //testes
 let tst1 = new EmbarcacaoBot(1, 1, 't');
+embarcações.push(tst1);
 let tst2 = new EmbarcacaoBot(1, 2, 't');
+embarcações.push(tst2);
 let tst3 = new EmbarcacaoBot(1, 3, 't');
+embarcações.push(tst3);
 tst1.addEmbarcação();
 tst2.addEmbarcação();
 tst3.addEmbarcação();
 console.log(tst3.posições, tst2.posições, tst1.posições)
 console.log(mapa)
+console.log(embarcações)
