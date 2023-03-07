@@ -34,13 +34,36 @@ for (let k = 0; k < tamanhoMapa; k++)
 }
 
 //função de ataque ao bot
-//TODO: [Fazer função de ataque]
 function ataque(id)
 {   
     console.log("Ataque na célula: " + id);     
     let y = id.substring(1);
     let x = id.substring(0,1);
-    console.log(mapa[x][y])
+
+    for (let i = 0; i < embarcações.length; i++) 
+    {
+        if (embarcações[i].posições.includes(x +''+ y)) 
+        {
+            embarcações[i].HP --;
+            console.log(embarcações);
+            break;
+        }
+        
+    }
+    document.getElementById(id).disabled = true;
+    console.log(id)
+    console.log("deveria ter desabilitado")
+    exibição(id)
+}
+function exibição(id)
+{     
+    let y = id.substring(1);
+    let x = id.substring(0,1);
+
+    for (let i = 0; i < embarcações.length; i++) 
+    {
+        
+    }  
 }
 
 class EmbarcacaoBot
@@ -51,6 +74,8 @@ class EmbarcacaoBot
         this.quantidadeEspaços = quantidadeEspaços;
         this.letraEmbarcação = letraEmbarcação;
         this.posições = new Array();
+        this.HP = quantidadeEspaços;
+        this.afundou = false;
     }
     random(min, max)
     {
@@ -114,7 +139,6 @@ class EmbarcacaoBot
             else
             {
                 
-                //O número máximo do random está contido no conjunto de possibilidades para embarcação, por isso o +1
                 let x = this.random(0, tamanhoMapa);
                 let y = this.random(0, tamanhoMapa - quantidadeEspaços + 1);    
                 
@@ -164,6 +188,5 @@ embarcações.push(tst3);
 tst1.addEmbarcação();
 tst2.addEmbarcação();
 tst3.addEmbarcação();
-console.log(tst3.posições, tst2.posições, tst1.posições)
 console.log(mapa)
 console.log(embarcações)
