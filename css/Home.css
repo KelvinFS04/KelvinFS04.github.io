@@ -1,12 +1,18 @@
 #corpo
 {
-    background-color: #141414;
-    width: 70%;
     margin: auto;
+    font-size: 1.05em;
 }
-    .bloco
-    {
-        background-color: #141414;
-        margin: 0 25px;
-    }
-    
+section {
+    padding: 50px;
+  }
+  
+  section h2 {
+    margin-bottom: 20px;
+  }
+  
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }

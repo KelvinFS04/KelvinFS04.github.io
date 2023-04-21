@@ -4,7 +4,7 @@
     margin: 0px;
     background-color: #0f0f0f;
     text-align: justify;
-    font-size: 1.15em;
+    font-size: 1em;
 }
 body
 {
@@ -26,6 +26,7 @@ body
             display: table-cell;
             background-color: #000000;
             vertical-align: middle;
+            padding-left: 15px;
         }
         #menu
         {
